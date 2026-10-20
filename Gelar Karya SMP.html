@@ -1,0 +1,2604 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelar Karya & Pameran Seni - SMP Bodhi Dharma</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Fredoka"', 'sans-serif'],
+                    },
+                    colors: {
+                        skysoft: {
+                            50: '#f4faff',
+                            100: '#e6f4fe',
+                            200: '#bae6fd',
+                            300: '#88d4fc',
+                            400: '#4dbbf8',
+                            500: '#209ee6',
+                            600: '#127ec2',
+                            700: '#11649b',
+                            800: '#13547f',
+                            900: '#154669',
+                        },
+                        slatesoft: {
+                            600: '#52657a',
+                            700: '#3b4d61',
+                            800: '#273647',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: linear-gradient(160deg, #f0f9ff 0%, #e0f2fe 50%, #f4faff 100%);
+            color: #3b4d61;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .sky-glass {
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(186, 230, 253, 0.7);
+        }
+
+        .sky-card {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid #d8effd;
+            box-shadow: 0 8px 24px -6px rgba(14, 116, 144, 0.06);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .sky-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px -6px rgba(14, 116, 144, 0.11);
+            border-color: #93d5fc;
+        }
+
+        @keyframes floatWave {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-6px) rotate(0.5deg); }
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .animated-gradient-text {
+            background: linear-gradient(270deg, #127ec2, #38bdf8, #0284c7, #60a5fa, #127ec2);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientFlow 7s ease infinite;
+        }
+
+        .kinetic-char {
+            display: inline-block;
+            animation: floatWave 3.2s ease-in-out infinite;
+        }
+
+        .cursor-blink {
+            display: inline-block;
+            width: 3px;
+            height: 1.1em;
+            background-color: #209ee6;
+            vertical-align: middle;
+            margin-left: 4px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @keyframes scaleBounce {
+            0% { transform: scale(0); opacity: 0; }
+            60% { transform: scale(1.15); opacity: 1; }
+            80% { transform: scale(0.95); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .animate-pop-in {
+            animation: scaleBounce 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(260px) rotate(360deg); opacity: 0; }
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 3px;
+            animation: confettiFall 2.2s ease-out forwards;
+        }
+
+        @keyframes shakeError {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-10px) rotate(-1deg); }
+            40% { transform: translateX(10px) rotate(1deg); }
+            60% { transform: translateX(-7px); }
+            80% { transform: translateX(7px); }
+        }
+
+        .animate-shake {
+            animation: shakeError 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        }
+
+        @keyframes unlockPulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            50% { transform: scale(1.18) rotate(-8deg); box-shadow: 0 0 0 18px rgba(16, 185, 129, 0); }
+            100% { transform: scale(1) rotate(0deg); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .animate-unlock-success {
+            animation: unlockPulse 0.65s ease-out forwards;
+        }
+
+        @keyframes radarSweep {
+            0% { transform: scale(0.85); opacity: 0.75; }
+            100% { transform: scale(1.65); opacity: 0; }
+        }
+
+        .lock-ring-wave {
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            border: 2px solid #38bdf8;
+            animation: radarSweep 1.8s infinite ease-out;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e6f4fe;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #93d5fc;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4dbbf8;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-skysoft-200 selection:text-skysoft-900">
+
+    <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-sky-200/40 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/3 -right-24 w-[28rem] h-[28rem] bg-blue-200/30 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-24 left-1/4 w-96 h-96 bg-cyan-100/50 rounded-full blur-3xl"></div>
+    </div>
+
+    <header class="sticky top-0 z-40 sky-glass shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap items-center justify-between py-3 gap-4">
+                
+                <div class="flex items-center gap-3 select-none">
+  <div class="w-11 h-11 rounded-xl bg-white border border-sky-200 shadow-sm flex items-center justify-center overflow-hidden shrink-0">
+    <img 
+      id="schoolLogoImg" 
+      src="Logo OSIS SMPBD.png" 
+      alt="Logo SMP Bodhi Dharma" 
+      class="w-full h-full object-contain p-1 pointer-events-none"
+      draggable="false"
+    />
+  </div>
+  <div>
+    <h1 class="font-bold text-slate-800 text-sm sm:text-base leading-tight">SMP Bodhi Dharma</h1>
+    <p class="text-xs text-sky-600 font-medium">Pameran Seni & Gelar Karya</p>
+  </div>
+</div>
+
+                <nav class="flex items-center gap-1.5 sm:gap-2 bg-skysoft-100/80 p-1.5 rounded-2xl border border-skysoft-200 w-full lg:w-auto justify-around lg:justify-end">
+                    <button onclick="switchTab('home')" id="tabBtn-home"
+                            class="nav-tab-btn flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-skysoft-700 shadow-sm">
+                        <i class="ph-duotone ph-sparkle text-lg"></i>
+                        <span>Home</span>
+                    </button>
+                    <button onclick="switchTab('drive')" id="tabBtn-drive"
+                            class="nav-tab-btn flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slatesoft-600 hover:text-skysoft-700 hover:bg-white/50">
+                        <i class="ph-duotone ph-folders text-lg"></i>
+                        <span>Folder Drive Kelas</span>
+                    </button>
+                    <button onclick="switchTab('upload')" id="tabBtn-upload"
+                            class="nav-tab-btn flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slatesoft-600 hover:text-skysoft-700 hover:bg-white/50">
+                        <i class="ph-duotone ph-cloud-arrow-up text-lg"></i>
+                        <span>Post Karya</span>
+                    </button>
+                    <button onclick="switchTab('spreadsheet')" id="tabBtn-spreadsheet"
+                            class="nav-tab-btn flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slatesoft-600 hover:text-skysoft-700 hover:bg-white/50">
+                        <i class="ph-duotone ph-table text-lg"></i>
+                        <span>Data Spreadsheet</span>
+                        <span id="spamBadgeCount" class="hidden px-1.5 py-0.2 bg-amber-100 text-amber-700 rounded-full text-[10px]">0</span>
+                    </button>
+                    <button onclick="openDriveIntegrationModal()" id="tabBtn-codegs"
+                            class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-skysoft-500 text-white hover:bg-skysoft-600 shadow-sm">
+                        <i id="headerLockIcon" class="ph-bold ph-lock-key text-base"></i>
+                        <span>Sinkronisasi GAS</span>
+                    </button>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+        <div id="driveConnectionBanner" class="rounded-2xl px-4 py-2.5 bg-white/85 border border-skysoft-200 flex flex-wrap items-center justify-between gap-2 text-xs shadow-sm">
+            <div class="flex items-center gap-2">
+                <span id="connectionDot" class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span id="connectionStatusText" class="font-semibold text-slatesoft-700">
+                    Terhubung ke Default URL GAS (Vercel Ready)
+                </span>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="fetchPostsFromGoogleDrive(true)" class="px-2.5 py-1 rounded-lg bg-skysoft-50 hover:bg-skysoft-100 text-skysoft-700 font-semibold border border-skysoft-200 flex items-center gap-1 transition-all">
+                    <i class="ph-bold ph-arrows-clockwise"></i>
+                    <span>Refresh Data Drive</span>
+                </button>
+                <button onclick="requestPasswordForAction('open_modal')" class="px-2.5 py-1 rounded-lg bg-skysoft-100 hover:bg-skysoft-200 text-skysoft-800 font-bold flex items-center gap-1 transition-all">
+                    <i class="ph-fill ph-key"></i>
+                    <span>Edit URL GAS / Kode GS</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-md w-full px-4 pointer-events-none"></div>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+
+        <section id="tab-home" class="tab-panel space-y-10">
+            
+            <div class="relative rounded-3xl sky-card p-6 sm:p-10 lg:p-12 overflow-hidden border border-skysoft-200">
+                <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-skysoft-200/40 rounded-full blur-2xl pointer-events-none"></div>
+                
+                <div class="relative z-10 max-w-3xl space-y-5">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-skysoft-100 border border-skysoft-200 text-skysoft-700 text-xs sm:text-sm font-medium">
+                        <span class="w-2 h-2 rounded-full bg-skysoft-500 animate-ping"></span>
+                        <span>Pameran Virtual Siswa-Siswi Kelas 7, 8 & 9</span>
+                    </div>
+
+                    <div class="space-y-2">
+                        <h2 id="kineticTitle" class="font-display text-3xl sm:text-5xl font-bold tracking-tight text-slatesoft-800 leading-tight">
+                            Ruang Apresiasi Seni &amp; Kreativitas
+                        </h2>
+                        <div class="font-display text-2xl sm:text-4xl font-bold animated-gradient-text min-h-[2.5rem] sm:min-h-[3rem] flex items-center">
+                            <span id="typewriterText">Gelar Karya SMP Bodhi Dharma</span><span class="cursor-blink"></span>
+                        </div>
+                    </div>
+
+                    <p class="text-slatesoft-600 text-sm sm:text-base leading-relaxed max-w-2xl">
+                        Selamat datang di galeri video dan blog karya seni digital siswa SMP Bodhi Dharma. Jelajahi karya setiap kelas, berikan apresiasi dengan menonton video, dan dukung karya favoritmu menuju puncak klasemen penonton terbanyak!
+                    </p>
+
+                    <div class="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
+                        <button onclick="switchTab('upload')" class="px-5 py-2.5 rounded-2xl bg-skysoft-500 hover:bg-skysoft-600 text-white font-semibold text-sm shadow-sm hover:shadow transition-all flex items-center gap-2">
+                            <i class="ph-bold ph-plus-circle text-lg"></i>
+                            <span>Upload Karya Kelasmu</span>
+                        </button>
+                        <button onclick="switchTab('drive')" class="px-5 py-2.5 rounded-2xl bg-white hover:bg-skysoft-50 text-skysoft-700 border border-skysoft-200 font-semibold text-sm transition-all flex items-center gap-2">
+                            <i class="ph-duotone ph-folder-open text-lg"></i>
+                            <span>Buka Folder Drive Kelas</span>
+                        </button>
+                        <div class="flex items-center gap-4 ml-auto text-xs sm:text-sm text-slatesoft-600 bg-skysoft-50/90 px-4 py-2 rounded-2xl border border-skysoft-200">
+                            <div><strong id="statTotalVideos" class="text-skysoft-700">0</strong> Karya Terpublikasi</div>
+                            <span class="text-skysoft-300">|</span>
+                            <div><strong id="statTotalViews" class="text-skysoft-700">0</strong> Total Tayangan Valid</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-10 h-10 rounded-2xl bg-amber-100 border border-amber-200 flex items-center justify-center text-amber-600">
+                            <i class="ph-duotone ph-trophy text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-slatesoft-800">Peringkat Teratas (View Terbanyak)</h3>
+                            <p class="text-xs text-slatesoft-600">Karya dengan jumlah penonton valid tertinggi otomatis berada di posisi paling atas</p>
+                        </div>
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 text-xs text-skysoft-700 bg-skysoft-100/80 px-3 py-1.5 rounded-xl border border-skysoft-200">
+                        <i class="ph-duotone ph-shield-check text-base text-skysoft-600"></i>
+                        <span>Dilindungi Anti-Spam 30 Detik</span>
+                    </div>
+                </div>
+
+                <div id="topLeaderboardGrid" class="grid grid-cols-1 md:grid-cols-3 gap-5"></div>
+            </div>
+
+            <div class="space-y-5 pt-2">
+                <div class="sky-card rounded-3xl p-5 space-y-4">
+                    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-slatesoft-800 flex items-center gap-2">
+                                <i class="ph-duotone ph-film-strip text-skysoft-600"></i>
+                                <span>Eksplorasi Semua Video & Blog Karya</span>
+                            </h3>
+                            <p class="text-xs text-slatesoft-600">Saring berdasarkan angkatan Kelas 7, 8, 9 atau pilih folder kelas spesifik</p>
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-2.5">
+                            <div class="relative flex-1 sm:flex-initial">
+                                <i class="ph ph-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slatesoft-600"></i>
+                                <input type="text" id="searchInput" oninput="renderHomeGallery()" placeholder="Cari judul atau kreator..."
+                                       class="w-full sm:w-56 pl-9 pr-3 py-2 rounded-xl bg-skysoft-50 border border-skysoft-200 text-sm focus:outline-none focus:border-skysoft-400">
+                            </div>
+
+                            <select id="sortSelect" onchange="renderHomeGallery()"
+                                    class="px-3.5 py-2 rounded-xl bg-skysoft-50 border border-skysoft-200 text-sm font-medium text-slatesoft-700 focus:outline-none focus:border-skysoft-400">
+                                <option value="views_desc">🔥 View Terbanyak (Paling Up)</option>
+                                <option value="newest">🕒 Terbaru Diupload</option>
+                                <option value="class_asc">📁 Urutan Kelas (7 - 9)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-skysoft-100">
+                        <span class="text-xs font-semibold text-slatesoft-600 mr-1">Filter Angkatan:</span>
+                        <button onclick="setGradeFilter('ALL')" id="gradeFilter-ALL" class="grade-pill px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-skysoft-500 text-white shadow-sm transition-all">
+                            Semua Kelas
+                        </button>
+                        <button onclick="setGradeFilter('7')" id="gradeFilter-7" class="grade-pill px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-skysoft-50 text-slatesoft-700 hover:bg-skysoft-100 border border-skysoft-200 transition-all">
+                            Kelas 7 (Sanna • Nyana • Vinnana • Sasana)
+                        </button>
+                        <button onclick="setGradeFilter('8')" id="gradeFilter-8" class="grade-pill px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-skysoft-50 text-slatesoft-700 hover:bg-skysoft-100 border border-skysoft-200 transition-all">
+                            Kelas 8 (Kusala • Manggala • Saddha • Samodana)
+                        </button>
+                        <button onclick="setGradeFilter('9')" id="gradeFilter-9" class="grade-pill px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-skysoft-50 text-slatesoft-700 hover:bg-skysoft-100 border border-skysoft-200 transition-all">
+                            Kelas 9 (Adhika • Satti • Adhicitta • Magga)
+                        </button>
+                    </div>
+
+                    <div id="subClassFilterBar" class="flex flex-wrap items-center gap-1.5 pt-1"></div>
+                </div>
+
+                <div id="homeGalleryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            </div>
+
+        </section>
+
+        <section id="tab-drive" class="tab-panel hidden space-y-6">
+            
+            <div class="sky-card rounded-3xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div class="space-y-1">
+                    <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-skysoft-100 text-skysoft-700 text-xs font-semibold">
+                        <i class="ph-fill ph-lock-key"></i>
+                        <span>Struktur Folder Baku & Terkunci (Tidak Dapat Diedit)</span>
+                    </div>
+                    <h2 class="font-display text-2xl font-bold text-slatesoft-800">Google Drive Explorer - Folder Kelas</h2>
+                    <p class="text-xs sm:text-sm text-slatesoft-600">
+                        Buka folder masing-masing kelas layaknya Google Drive untuk melihat daftar video, membaca blog deskripsi, dan memutar karya siswa.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="switchTab('upload')" class="px-4 py-2.5 rounded-xl bg-skysoft-500 hover:bg-skysoft-600 text-white text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-sm transition-all">
+                        <i class="ph-bold ph-upload-simple"></i>
+                        <span>Upload ke Folder Ini</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="sky-card rounded-2xl px-5 py-3.5 flex flex-wrap items-center justify-between gap-3">
+                <div id="driveBreadcrumb" class="flex items-center flex-wrap gap-1.5 text-sm font-semibold text-slatesoft-700"></div>
+
+                <div class="flex items-center gap-2">
+                    <span class="text-xs text-slatesoft-600">Tampilan:</span>
+                    <button onclick="setDriveLayout('grid')" id="driveLayoutGrid" class="p-2 rounded-lg bg-skysoft-100 text-skysoft-700">
+                        <i class="ph-bold ph-squares-four"></i>
+                    </button>
+                    <button onclick="setDriveLayout('list')" id="driveLayoutList" class="p-2 rounded-lg hover:bg-skysoft-50 text-slatesoft-600">
+                        <i class="ph-bold ph-list-dashes"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="driveExplorerContent" class="space-y-6"></div>
+
+        </section>
+
+        <section id="tab-upload" class="tab-panel hidden max-w-4xl mx-auto space-y-6">
+            
+            <div class="sky-card rounded-3xl p-6 sm:p-8 space-y-6">
+                <div class="flex items-start justify-between gap-4 border-b border-skysoft-100 pb-5">
+                    <div>
+                        <span class="px-2.5 py-1 rounded-lg bg-skysoft-100 text-skysoft-700 text-xs font-semibold">
+                            Formulir Publikasi Siswa
+                        </span>
+                        <h2 class="font-display text-2xl sm:text-3xl font-bold text-slatesoft-800 mt-1">
+                            Post Video & Blog Karya Seni
+                        </h2>
+                        <p class="text-xs sm:text-sm text-slatesoft-600 mt-1">
+                            Pilih folder kelasmu, unggah video atau masukkan tautan Google Drive, tambahkan thumbnail serta cerita di balik karyamu.
+                        </p>
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl bg-skysoft-100 text-skysoft-600 flex items-center justify-center shrink-0">
+                        <i class="ph-duotone ph-video-camera text-2xl"></i>
+                    </div>
+                </div>
+
+                <form id="uploadForm" onsubmit="handlePostSubmit(event)" class="space-y-6">
+                    
+                    <div class="p-4 sm:p-5 rounded-2xl bg-skysoft-50/90 border border-skysoft-200 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <label class="text-sm font-bold text-slatesoft-800 flex items-center gap-2">
+                                <i class="ph-duotone ph-folder-lock text-skysoft-600 text-lg"></i>
+                                <span>1. Pilih Tujuan Folder Kelas (Terkunci Sesuai Daftar Resmi)</span>
+                            </label>
+                            <span class="text-[11px] text-skysoft-700 bg-white px-2.5 py-0.5 rounded-full border border-skysoft-200">Wajib Dipilih</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slatesoft-600 mb-1.5">Tingkat Kelas (Grade)</label>
+                                <select id="formGrade" onchange="updateFormClassOptions()" required
+                                        class="w-full px-4 py-2.5 rounded-xl bg-white border border-skysoft-200 text-sm font-semibold text-slatesoft-800 focus:outline-none focus:border-skysoft-500">
+                                    <option value="7">Kelas 7</option>
+                                    <option value="8">Kelas 8</option>
+                                    <option value="9">Kelas 9</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slatesoft-600 mb-1.5">Nama Folder Kelas</label>
+                                <select id="formClassFolder" required
+                                        class="w-full px-4 py-2.5 rounded-xl bg-white border border-skysoft-200 text-sm font-semibold text-slatesoft-800 focus:outline-none focus:border-skysoft-500">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="sm:col-span-2">
+                            <label class="block text-xs font-semibold text-slatesoft-700 mb-1.5">Judul Karya Seni / Video *</label>
+                            <input type="text" id="formTitle" required placeholder="Contoh: Tari Kreasi Nusantara - Harmoni Pelangi"
+                                   class="w-full px-4 py-2.5 rounded-xl bg-white border border-skysoft-200 text-sm focus:outline-none focus:border-skysoft-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slatesoft-700 mb-1.5">Nama Siswa / Kelompok *</label>
+                            <input type="text" id="formAuthor" required placeholder="Contoh: Kelompok 2 (Alicia, Kevin, Dhamma)"
+                                   class="w-full px-4 py-2.5 rounded-xl bg-white border border-skysoft-200 text-sm focus:outline-none focus:border-skysoft-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slatesoft-700 mb-1.5">Kategori Karya</label>
+                            <select id="formCategory" class="w-full px-4 py-2.5 rounded-xl bg-white border border-skysoft-200 text-sm focus:outline-none focus:border-skysoft-500">
+                                <option value="Seni Tari & Pertunjukan">Seni Tari & Pertunjukan</option>
+                                <option value="Seni Musik & Vokal">Seni Musik & Vokal</option>
+                                <option value="Seni Rupa & Lukis Digital">Seni Rupa & Lukis Digital</option>
+                                <option value="Film Pendek & Animasi">Film Pendek & Animasi</option>
+                                <option value="Prakarya & Kerajinan">Prakarya & Kerajinan</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div class="p-4 rounded-2xl bg-skysoft-50/70 border border-skysoft-200 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-bold text-slatesoft-800 flex items-center gap-1.5">
+                                    <i class="ph-duotone ph-film-slate text-skysoft-600 text-base"></i>
+                                    <span>File Video Siswa (Masuk ke Drive Anda)</span>
+                                </span>
+                                <span class="text-[10px] text-skysoft-700 bg-skysoft-100 px-2 py-0.5 rounded-md font-semibold">Auto-Upload Drive</span>
+                            </div>
+
+                            <div class="relative">
+                                <input type="file" id="formVideoFile" accept="video/*" onchange="handleVideoFilePreview(event)" class="hidden">
+                                <label for="formVideoFile" class="flex flex-col items-center justify-center p-4 border-2 border-dashed border-skysoft-300 rounded-xl bg-white/80 hover:bg-white cursor-pointer transition-all text-center">
+                                    <i class="ph-duotone ph-video text-2xl text-skysoft-500 mb-1"></i>
+                                    <span id="videoFileName" class="text-xs font-semibold text-slatesoft-700">Pilih File Video dari Perangkat</span>
+                                    <span class="text-[11px] text-slatesoft-600 mt-0.5">Otomatis diunggah ke Google Drive Folder Kelas</span>
+                                </label>
+                            </div>
+
+                            <input type="url" id="formVideoUrl" placeholder="Atau tempel link video Google Drive jika file > 40MB (Opsional)"
+                                   class="w-full px-3.5 py-2 rounded-xl bg-white border border-skysoft-200 text-xs focus:outline-none focus:border-skysoft-500">
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-skysoft-50/70 border border-skysoft-200 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-bold text-slatesoft-800 flex items-center gap-1.5">
+                                    <i class="ph-duotone ph-image text-skysoft-600 text-base"></i>
+                                    <span>Thumbnail Sampul Karya</span>
+                                </span>
+                                <span class="text-[10px] text-slatesoft-600">JPG / PNG / URL</span>
+                            </div>
+
+                            <div class="relative">
+                                <input type="file" id="formThumbFile" accept="image/*" onchange="handleThumbFilePreview(event)" class="hidden">
+                                <label for="formThumbFile" class="flex flex-col items-center justify-center p-4 border-2 border-dashed border-skysoft-300 rounded-xl bg-white/80 hover:bg-white cursor-pointer transition-all text-center">
+                                    <i class="ph-duotone ph-camera-plus text-2xl text-skysoft-500 mb-1"></i>
+                                    <span id="thumbFileName" class="text-xs font-semibold text-slatesoft-700">Upload Gambar Thumbnail</span>
+                                    <span class="text-[11px] text-slatesoft-600 mt-0.5">Ikut tersimpan ke folder Google Drive Kelas</span>
+                                </label>
+                            </div>
+
+                            <input type="url" id="formThumbUrl" placeholder="Atau tempel URL Gambar Thumbnail (Opsional)..."
+                                   class="w-full px-3.5 py-2 rounded-xl bg-white border border-skysoft-200 text-xs focus:outline-none focus:border-skysoft-500">
+                        </div>
+                    </div>
+
+                    <div id="uploadProgressBox" class="hidden p-4 rounded-2xl bg-skysoft-100/90 border border-skysoft-300 space-y-2">
+                        <div class="flex items-center justify-between text-xs font-bold text-skysoft-800">
+                            <span id="uploadProgressText" class="flex items-center gap-2">
+                                <i class="ph-bold ph-spinner animate-spin text-base"></i>
+                                Mengunggah file video &amp; thumbnail ke Google Drive Anda...
+                            </span>
+                            <span id="uploadProgressPercent">45%</span>
+                        </div>
+                        <div class="w-full h-2.5 bg-white rounded-full overflow-hidden">
+                            <div id="uploadProgressBar" class="h-full bg-gradient-to-r from-skysoft-400 to-skysoft-600 rounded-full transition-all duration-300" style="width: 45%"></div>
+                        </div>
+                        <p class="text-[11px] text-slatesoft-600">Mohon tunggu sebentar, file sedang disimpan ke folder kelas di Google Drive &amp; dicatat ke Spreadsheet.</p>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slatesoft-700 mb-1.5">
+                            Cerita / Deskripsi Blog Karya Seni *
+                        </label>
+                        <textarea id="formDescription" rows="5" required
+                                  placeholder="Ceritakan konsep karya, makna filosofis, proses pembuatan, alat dan bahan yang digunakan, atau pesan yang ingin disampaikan kepada penonton..."
+                                  class="w-full px-4 py-3 rounded-2xl bg-white border border-skysoft-200 text-sm focus:outline-none focus:border-skysoft-500 leading-relaxed"></textarea>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-3 border-t border-skysoft-100">
+                        <div class="flex items-center gap-2 text-xs text-slatesoft-600">
+                            <i class="ph-duotone ph-table text-skysoft-600 text-lg"></i>
+                            <span>Otomatis tercatat ke <strong>Data Spreadsheet</strong> &amp; Folder Kelas</span>
+                        </div>
+
+                        <button type="submit" id="submitPostBtn"
+                                class="w-full sm:w-auto px-7 py-3 rounded-2xl bg-skysoft-500 hover:bg-skysoft-600 text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                            <i class="ph-bold ph-paper-plane-tilt text-lg"></i>
+                            <span>Publikasikan Karya Sekarang</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+
+        <section id="tab-spreadsheet" class="tab-panel hidden space-y-6">
+            
+            <div class="sky-card rounded-3xl p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                <div class="space-y-1">
+                    <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold">
+                        <i class="ph-fill ph-microsoft-excel-logo"></i>
+                        <span>Live Spreadsheet & Anti-Spam Monitor</span>
+                    </div>
+                    <h2 class="font-display text-2xl font-bold text-slatesoft-800">
+                        Rekapitulasi Data Karya & Jumlah View Kelas
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slatesoft-600">
+                        Data diurutkan otomatis dari jumlah tayangan tertinggi. Sistem mendeteksi & menghapus bukaan berulang dalam 30 detik (Spam).
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-2.5">
+                    <button onclick="fetchPostsFromGoogleDrive(true)" class="px-4 py-2.5 rounded-xl bg-skysoft-100 hover:bg-skysoft-200 text-skysoft-800 text-xs sm:text-sm font-semibold flex items-center gap-2 transition-all">
+                        <i class="ph-bold ph-arrows-clockwise"></i>
+                        <span>Refresh dari Spreadsheet</span>
+                    </button>
+                    <button onclick="exportSpreadsheetCSV()" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-sm transition-all">
+                        <i class="ph-bold ph-download-simple"></i>
+                        <span>Unduh CSV / Excel</span>
+                    </button>
+                    <button onclick="openDriveIntegrationModal()" class="px-4 py-2.5 rounded-xl bg-skysoft-500 hover:bg-skysoft-600 text-white text-xs sm:text-sm font-semibold flex items-center gap-2 shadow-sm transition-all">
+                        <i class="ph-bold ph-lock-key text-base"></i>
+                        <span>Sinkronisasi &amp; Edit URL GAS</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="sky-card rounded-2xl p-4 bg-skysoft-50/90 border border-skysoft-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div class="flex items-start sm:items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-skysoft-100 text-skysoft-700 flex items-center justify-center shrink-0">
+                        <i class="ph-duotone ph-shield-warning text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xs sm:text-sm font-bold text-slatesoft-800">
+                            Aturan Proteksi Anti-Spam 30 Detik Aktif
+                        </h4>
+                        <p class="text-xs text-slatesoft-600">
+                            Jika satu video dibuka kembali dalam kurun waktu <strong>&lt; 30 detik</strong>, sistem menandai sebagai anomali spam dan menghapusnya dari daftar tayangan aktif.
+                        </p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                    <span class="text-xs font-semibold text-slatesoft-700">Saat Spam Terdeteksi:</span>
+                    <select id="spamPolicySelect" onchange="updateSpamPolicy()" class="px-3 py-1.5 rounded-xl bg-white border border-skysoft-200 text-xs font-semibold text-slatesoft-800">
+                        <option value="delete_post">Hapus Karya dari Galeri (Masuk Karantina)</option>
+                        <option value="delete_view">Hapus / Batalkan Tambahan View Spam</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="sky-card rounded-3xl overflow-hidden border border-skysoft-200">
+                <div class="px-6 py-4 bg-skysoft-100/70 border-b border-skysoft-200 flex flex-wrap items-center justify-between gap-2">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+                        <span class="text-xs font-bold uppercase tracking-wider text-slatesoft-700">Sheet 1: Data_Gelar_Karya_Bodhi_Dharma</span>
+                    </div>
+                    <span id="sheetRowCount" class="text-xs font-medium text-slatesoft-600">Menampilkan 0 baris data</span>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-skysoft-50/90 text-slatesoft-700 text-xs uppercase border-b border-skysoft-200">
+                                <th class="py-3.5 px-4 font-bold">Peringkat</th>
+                                <th class="py-3.5 px-4 font-bold">Folder Kelas</th>
+                                <th class="py-3.5 px-4 font-bold">Judul Karya</th>
+                                <th class="py-3.5 px-4 font-bold">Kreator / Siswa</th>
+                                <th class="py-3.5 px-4 font-bold">Jumlah View</th>
+                                <th class="py-3.5 px-4 font-bold">Bukaan Terakhir</th>
+                                <th class="py-3.5 px-4 font-bold">Status Anti-Spam</th>
+                                <th class="py-3.5 px-4 font-bold text-right">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="spreadsheetTableBody" class="divide-y divide-skysoft-100 text-xs sm:text-sm"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="sky-card rounded-3xl overflow-hidden border border-amber-200/80">
+                <div class="px-6 py-4 bg-amber-50/80 border-b border-amber-200/70 flex flex-wrap items-center justify-between gap-2">
+                    <div class="flex items-center gap-2 text-amber-800">
+                        <i class="ph-duotone ph-trash text-lg"></i>
+                        <span class="text-xs font-bold uppercase tracking-wider">Log Penghapusan Otomatis Anti-Spam (&lt; 30 Detik)</span>
+                    </div>
+                    <button onclick="clearSpamLogs()" class="text-xs font-semibold text-amber-700 hover:underline">Bersihkan Log</button>
+                </div>
+                <div class="p-4 sm:p-6">
+                    <div id="spamLogContainer" class="space-y-2 text-xs text-slatesoft-600"></div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <div id="videoModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 bg-slatesoft-800/50 backdrop-blur-sm">
+        <div class="sky-card bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-skysoft-200 animate-pop-in">
+            
+            <div class="sticky top-0 z-20 flex items-center justify-between px-5 py-3.5 bg-white/95 backdrop-blur border-b border-skysoft-100">
+                <div class="flex items-center gap-2.5">
+                    <span id="modalFolderBadge" class="px-3 py-1 rounded-xl bg-skysoft-100 text-skysoft-700 text-xs font-bold">
+                        Kelas 7 Sanna
+                    </span>
+                    <span id="modalCategoryBadge" class="text-xs text-slatesoft-600 font-medium">
+                        Seni Tari
+                    </span>
+                </div>
+                <button onclick="closeVideoModal()" class="w-9 h-9 rounded-xl bg-skysoft-50 hover:bg-skysoft-100 text-slatesoft-700 flex items-center justify-center transition-all">
+                    <i class="ph-bold ph-x text-lg"></i>
+                </button>
+            </div>
+
+            <div class="bg-slate-900 aspect-video w-full relative overflow-hidden flex items-center justify-center" id="modalPlayerContainer"></div>
+
+            <div class="p-5 sm:p-8 space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-skysoft-100">
+                    <div class="space-y-1">
+                        <h2 id="modalTitle" class="font-display text-xl sm:text-2xl font-bold text-slatesoft-800">
+                            Judul Karya
+                        </h2>
+                        <p class="text-xs sm:text-sm text-slatesoft-600 flex items-center gap-2">
+                            <span>Oleh: <strong id="modalAuthor" class="text-slatesoft-800">Nama Siswa</strong></span>
+                            <span>•</span>
+                            <span id="modalDate">20 Okt 2026</span>
+                        </p>
+                    </div>
+
+                    <div class="flex items-center gap-3 self-start sm:self-center">
+                        <div class="px-4 py-2 rounded-2xl bg-skysoft-50 border border-skysoft-200 flex items-center gap-2">
+                            <i class="ph-duotone ph-eye text-xl text-skysoft-600"></i>
+                            <div>
+                                <div id="modalViews" class="text-base font-bold text-skysoft-700 leading-none">0</div>
+                                <div class="text-[10px] text-slatesoft-600">Total Penonton</div>
+                            </div>
+                        </div>
+
+                        <button onclick="testRapidSpamClick()" title="Simulasi buka ulang dalam < 30 detik untuk tes sistem anti-spam"
+                                class="px-3 py-2 rounded-2xl bg-amber-50 hover:bg-amber-100 border border-amber-200 text-amber-700 text-xs font-semibold flex items-center gap-1.5 transition-all">
+                            <i class="ph-duotone ph-warning-circle text-base"></i>
+                            <span>Tes Buka Ulang (&lt;30d)</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-skysoft-700 flex items-center gap-1.5">
+                        <i class="ph-duotone ph-article text-base"></i>
+                        <span>Catatan & Deskripsi Blog Karya</span>
+                    </h4>
+                    <div id="modalDescription" class="text-sm sm:text-base text-slatesoft-700 leading-relaxed whitespace-pre-line bg-skysoft-50/60 p-5 rounded-2xl border border-skysoft-100"></div>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-between gap-3 pt-2 text-xs text-slatesoft-600">
+                    <div class="flex items-center gap-2">
+                        <i class="ph-duotone ph-google-drive-logo text-skysoft-600 text-base"></i>
+                        <span>Tersimpan di Folder: <strong id="modalDrivePath">Drive Saya / SMP Bodhi Dharma / Kelas 7 / Sanna</strong></span>
+                    </div>
+                    <span id="modalCooldownStatus" class="text-emerald-600 font-medium">✓ Tayangan tercatat di Spreadsheet</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="uploadSuccessModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slatesoft-800/40 backdrop-blur-sm">
+        <div class="relative sky-card bg-white rounded-3xl max-w-md w-full p-8 text-center shadow-2xl border border-skysoft-200 overflow-hidden animate-pop-in">
+            <div id="confettiContainer" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
+
+            <div class="relative z-10 space-y-4">
+                <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-skysoft-400 to-emerald-400 text-white mx-auto flex items-center justify-center shadow-lg">
+                    <i class="ph-bold ph-check text-4xl"></i>
+                </div>
+
+                <span class="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">
+                    Upload Selesai & Terpublikasi!
+                </span>
+
+                <h3 class="font-display text-2xl font-bold text-slatesoft-800">
+                    Karya Berhasil Masuk ke Folder!
+                </h3>
+
+                <p id="uploadSuccessDetail" class="text-xs sm:text-sm text-slatesoft-600 leading-relaxed">
+                    Video dan blog karyamu telah disimpan ke dalam folder kelas serta tercatat otomatis di Data Spreadsheet Pameran SMP Bodhi Dharma.
+                </p>
+
+                <div class="pt-3 flex flex-col sm:flex-row gap-2.5 justify-center">
+                    <button onclick="closeUploadSuccessModal('drive')" class="px-5 py-2.5 rounded-xl bg-skysoft-500 hover:bg-skysoft-600 text-white text-xs sm:text-sm font-semibold shadow-sm transition-all">
+                        Lihat di Folder Kelas
+                    </button>
+                    <button onclick="closeUploadSuccessModal('home')" class="px-5 py-2.5 rounded-xl bg-skysoft-50 hover:bg-skysoft-100 text-skysoft-700 border border-skysoft-200 text-xs sm:text-sm font-semibold transition-all">
+                        Ke Beranda Utama
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adminPasswordModal" class="fixed inset-0 z-[60] hidden items-center justify-center p-4 bg-slatesoft-800/60 backdrop-blur-md">
+        <div id="adminPasswordCard" class="sky-card bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 text-center shadow-2xl border border-skysoft-200 animate-pop-in relative overflow-hidden">
+            <button onclick="closePasswordModal()" class="absolute top-4 right-4 w-8 h-8 rounded-xl bg-skysoft-50 hover:bg-skysoft-100 text-slatesoft-600 flex items-center justify-center">
+                <i class="ph-bold ph-x"></i>
+            </button>
+
+            <div class="relative w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                <div id="passwordPulseRing" class="lock-ring-wave"></div>
+                <div id="passwordLockCircle" class="relative z-10 w-16 h-16 rounded-2xl bg-gradient-to-br from-skysoft-400 to-skysoft-600 text-white flex items-center justify-center shadow-md transition-all duration-300">
+                    <i id="passwordLockIcon" class="ph-duotone ph-lock-key text-3xl"></i>
+                </div>
+            </div>
+
+            <span id="passwordStatusBadge" class="inline-block px-3 py-1 rounded-full bg-skysoft-100 text-skysoft-700 text-[11px] font-bold uppercase tracking-wider">
+                Otorisasi Admin SMP Bodhi Dharma
+            </span>
+
+            <h3 class="font-display text-xl sm:text-2xl font-bold text-slatesoft-800 mt-2">
+                Verifikasi Password Sinkronisasi
+            </h3>
+            <p class="text-xs text-slatesoft-600 mt-1">
+                Masukkan password admin untuk membuka kunci pengeditan URL Google Apps Script &amp; sinkronisasi Drive.
+            </p>
+
+            <form onsubmit="verifyAdminPassword(event)" class="mt-5 space-y-4 text-left">
+                <div class="relative">
+                    <i class="ph-duotone ph-key absolute left-3.5 top-1/2 -translate-y-1/2 text-skysoft-600 text-lg"></i>
+                    <input type="password" id="adminPasswordInput" oninput="handlePasswordTyping()" required
+                           placeholder="Masukkan password admin..."
+                           class="w-full pl-10 pr-10 py-3 rounded-2xl bg-skysoft-50 border-2 border-skysoft-200 text-sm font-semibold text-slatesoft-800 focus:outline-none focus:border-skysoft-500 transition-all">
+                    <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slatesoft-600 hover:text-skysoft-700">
+                        <i id="passwordEyeIcon" class="ph-bold ph-eye text-lg"></i>
+                    </button>
+                </div>
+
+                <div class="h-1.5 w-full bg-skysoft-100 rounded-full overflow-hidden">
+                    <div id="passwordStrengthBar" class="h-full w-0 bg-gradient-to-r from-skysoft-400 to-emerald-400 transition-all duration-300"></div>
+                </div>
+
+                <p id="passwordErrorMsg" class="hidden text-xs font-bold text-rose-600 text-center bg-rose-50 py-2 px-3 rounded-xl border border-rose-200">
+                    Password salah! Akses sinkronisasi ditolak.
+                </p>
+
+                <button type="submit" id="passwordSubmitBtn"
+                        class="w-full py-3 rounded-2xl bg-skysoft-500 hover:bg-skysoft-600 text-white font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2">
+                    <i class="ph-bold ph-shield-check text-lg"></i>
+                    <span>Buka Kunci Sinkronisasi GAS</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="driveIntegrationModal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-5 bg-slatesoft-800/60 backdrop-blur-sm">
+        <div class="sky-card bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] overflow-y-auto p-5 sm:p-8 space-y-6 shadow-2xl border border-skysoft-200 animate-pop-in">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-skysoft-100 pb-4 sticky top-0 bg-white/95 backdrop-blur z-10">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-2xl bg-skysoft-100 text-skysoft-600 flex items-center justify-center">
+                        <i class="ph-duotone ph-google-drive-logo text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-display text-lg sm:text-xl font-bold text-slatesoft-800">Sinkronisasi Google Apps Script &amp; Kode <code>Code.gs</code></h3>
+                        <p class="text-xs text-slatesoft-600">URL Default aktif otomatis di Vercel • Edit URL lewat web dilindungi Password Admin</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="lockAdminBtn" onclick="lockGasEditing()" class="hidden px-3 py-1.5 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-800 text-xs font-bold items-center gap-1.5 transition-all">
+                        <i class="ph-bold ph-lock-key"></i>
+                        <span>Kunci Kembali</span>
+                    </button>
+                    <button onclick="closeDriveIntegrationModal()" class="w-9 h-9 rounded-xl bg-skysoft-50 hover:bg-skysoft-100 text-slatesoft-700 flex items-center justify-center">
+                        <i class="ph-bold ph-x text-lg"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="p-4 sm:p-5 rounded-2xl bg-skysoft-50 border border-skysoft-200 space-y-3">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                    <label class="text-xs sm:text-sm font-bold text-slatesoft-800 flex items-center gap-2">
+                        <span class="w-6 h-6 rounded-full bg-skysoft-600 text-white text-xs flex items-center justify-center font-bold">1</span>
+                        <span>URL Web App Google Apps Script (Default Vercel / Custom Web):</span>
+                    </label>
+                    <span id="urlLockBadge" class="text-[11px] font-bold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full border border-amber-200 flex items-center gap-1">
+                        <i class="ph-fill ph-lock-key"></i> Terkunci (Read-Only)
+                    </span>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-2.5">
+                    <input type="url" id="gasWebhookInput" readonly
+                           placeholder="https://script.google.com/macros/s/AKfycbx.../exec"
+                           class="flex-1 px-4 py-2.5 rounded-xl bg-slate-100 border border-skysoft-300 text-xs sm:text-sm text-slatesoft-600 font-mono focus:outline-none cursor-not-allowed transition-all">
+                    
+                    <button type="button" id="unlockEditUrlBtn" onclick="requestPasswordForAction('unlock_edit')"
+                            class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white text-xs sm:text-sm font-bold shadow-sm shrink-0 flex items-center justify-center gap-1.5 transition-all">
+                        <i class="ph-bold ph-key"></i>
+                        <span>Buka Kunci Edit (Password)</span>
+                    </button>
+
+                    <button type="button" id="saveGasUrlBtn" onclick="saveGasWebhook()"
+                            class="hidden px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold shadow-sm shrink-0 items-center justify-center gap-1.5 transition-all">
+                        <i class="ph-bold ph-cloud-check"></i>
+                        <span>Simpan &amp; Sinkronkan</span>
+                    </button>
+
+                    <button type="button" id="resetDefaultUrlBtn" onclick="resetToDefaultGasUrl()"
+                            class="hidden px-4 py-2.5 rounded-xl bg-white hover:bg-skysoft-100 text-skysoft-700 border border-skysoft-300 text-xs font-bold shrink-0 items-center justify-center gap-1 transition-all">
+                        <span>Reset ke Default</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <div class="flex flex-wrap items-center justify-between gap-2 bg-slate-800 text-white px-4 py-3 rounded-t-2xl">
+                    <div class="flex items-center gap-2 text-xs font-bold">
+                        <i class="ph-duotone ph-file-code text-sky-400 text-lg"></i>
+                        <span>Code.gs</span>
+                    </div>
+                    <button onclick="copyAppsScriptCode()" class="px-3.5 py-1.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-white text-xs font-bold flex items-center gap-1.5 transition-all shadow-sm">
+                        <i class="ph-bold ph-copy"></i>
+                        <span>Salin Semua Kode Code.gs</span>
+                    </button>
+                </div>
+                <pre id="appsScriptCodeBlock" class="text-[11px] sm:text-xs bg-slate-900 text-sky-100 p-4 rounded-b-2xl overflow-x-auto font-mono leading-relaxed max-h-96 select-all">const ROOT_DRIVE_FOLDER_ID = "";
+const MAIN_FOLDER_NAME = "Gelar Karya SMP Bodhi Dharma";
+const SHEET_NAME = "Data_Karya";
+const SPAM_LOG_SHEET = "Log_Spam_Terhapus";
+
+const LOCKED_FOLDERS = {
+  "7": ["Sanna", "Nyana", "Vinnana", "Sasana"],
+  "8": ["Kusala", "Manggala", "Saddha", "Samodana"],
+  "9": ["Adhika", "Satti", "Adhicitta", "Magga"]
+};
+
+function doGet(e) {
+  const action = (e && e.parameter && e.parameter.action) ? e.parameter.action : "list";
+  if (action === "list") {
+    return jsonResponse({
+      status: "success",
+      posts: getAllPostsFromSheet(),
+      spamLogs: getAllSpamLogsFromSheet()
+    });
+  }
+  return jsonResponse({ status: "ok" });
+}
+
+function doPost(e) {
+  const lock = LockService.getScriptLock();
+  lock.waitLock(25000);
+  try {
+    const payload = JSON.parse(e.postData.contents);
+    const action = payload.action || "upload";
+
+    if (action === "upload") {
+      return handleStudentUpload(payload);
+    } else if (action === "view") {
+      return handleViewAndAntiSpam(payload);
+    } else if (action === "delete") {
+      return handleDeletePost(payload.id);
+    }
+
+    return jsonResponse({ status: "error", message: "Invalid action" });
+  } catch (err) {
+    return jsonResponse({ status: "error", message: err.toString() });
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function handleStudentUpload(data) {
+  const grade = String(data.grade || "7");
+  const folderName = String(data.folder || "Sanna");
+
+  if (!LOCKED_FOLDERS[grade] || LOCKED_FOLDERS[grade].indexOf(folderName) === -1) {
+    return jsonResponse({ status: "error", message: "Invalid class folder" });
+  }
+
+  const targetFolder = getOrCreateClassFolder(grade, folderName);
+
+  let finalVideoUrl = data.videoUrl || "";
+  let driveFileId = "";
+
+  if (data.videoBase64 && data.videoName) {
+    const videoBlob = Utilities.newBlob(
+      Utilities.base64Decode(data.videoBase64),
+      data.videoMimeType || "video/mp4",
+      "[" + grade + "-" + folderName + "] " + data.videoName
+    );
+    const videoFile = targetFolder.createFile(videoBlob);
+    videoFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+    driveFileId = videoFile.getId();
+    finalVideoUrl = "https://drive.google.com/file/d/" + driveFileId + "/preview";
+  }
+
+  let finalThumbUrl = data.thumbUrl || "";
+  if (data.thumbBase64 && data.thumbName) {
+    const thumbBlob = Utilities.newBlob(
+      Utilities.base64Decode(data.thumbBase64),
+      data.thumbMimeType || "image/jpeg",
+      "[THUMB-" + grade + "-" + folderName + "] " + data.thumbName
+    );
+    const thumbFile = targetFolder.createFile(thumbBlob);
+    thumbFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+    finalThumbUrl = "https://drive.google.com/thumbnail?id=" + thumbFile.getId() + "&sz=w1000";
+  }
+
+  const sheet = getOrCreateMainSheet();
+  const id = data.id || ("bd-art-" + new Date().getTime());
+  const createdAt = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "yyyy-MM-dd HH:mm");
+
+  sheet.appendRow([
+    id,
+    grade,
+    folderName,
+    data.title || "Tanpa Judul",
+    data.author || "Siswa SMP Bodhi Dharma",
+    data.category || "Seni Budaya",
+    1,
+    createdAt,
+    0,
+    finalVideoUrl,
+    finalThumbUrl,
+    data.description || "",
+    driveFileId,
+    targetFolder.getUrl()
+  ]);
+
+  sortSheetByHighestViews(sheet);
+
+  return jsonResponse({
+    status: "success",
+    post: {
+      id: id,
+      grade: grade,
+      folder: folderName,
+      title: data.title,
+      author: data.author,
+      category: data.category,
+      views: 1,
+      createdAt: createdAt,
+      lastOpenedAt: 0,
+      videoUrl: finalVideoUrl,
+      thumbUrl: finalThumbUrl,
+      description: data.description,
+      driveFileId: driveFileId,
+      driveFolderUrl: targetFolder.getUrl()
+    }
+  });
+}
+
+function handleViewAndAntiSpam(data) {
+  const sheet = getOrCreateMainSheet();
+  const rows = sheet.getDataRange().getValues();
+  const nowMs = new Date().getTime();
+
+  for (let i = 1; i < rows.length; i++) {
+    if (String(rows[i][0]) === String(data.id)) {
+      const lastOpenedAt = Number(rows[i][8]) || 0;
+      const diffSeconds = lastOpenedAt > 0 ? (nowMs - lastOpenedAt) / 1000 : 9999;
+
+      if (diffSeconds < 30) {
+        const spamSheet = getOrCreateSpamSheet();
+        spamSheet.appendRow([
+          Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "HH:mm:ss"),
+          diffSeconds.toFixed(1),
+          rows[i][0],
+          rows[i][1],
+          rows[i][2],
+          rows[i][3],
+          rows[i][4],
+          rows[i][6]
+        ]);
+
+        const fileId = rows[i][12];
+        if (fileId && data.spamPolicy === "delete_post") {
+          try { DriveApp.getFileById(fileId).setTrashed(true); } catch (e) {}
+        }
+
+        if (data.spamPolicy !== "delete_view") {
+          sheet.deleteRow(i + 1);
+        }
+
+        return jsonResponse({
+          status: "spam_deleted",
+          elapsedSec: diffSeconds.toFixed(1)
+        });
+      }
+
+      const newViews = (Number(rows[i][6]) || 0) + 1;
+      sheet.getRange(i + 1, 7).setValue(newViews);
+      sheet.getRange(i + 1, 9).setValue(nowMs);
+      sortSheetByHighestViews(sheet);
+
+      return jsonResponse({ status: "success", views: newViews });
+    }
+  }
+  return jsonResponse({ status: "not_found" });
+}
+
+function handleDeletePost(postId) {
+  const sheet = getOrCreateMainSheet();
+  const rows = sheet.getDataRange().getValues();
+  for (let i = 1; i < rows.length; i++) {
+    if (String(rows[i][0]) === String(postId)) {
+      sheet.deleteRow(i + 1);
+      return jsonResponse({ status: "success" });
+    }
+  }
+  return jsonResponse({ status: "not_found" });
+}
+
+function getOrCreateClassFolder(grade, className) {
+  let rootFolder;
+  if (ROOT_DRIVE_FOLDER_ID && ROOT_DRIVE_FOLDER_ID.trim() !== "") {
+    rootFolder = DriveApp.getFolderById(ROOT_DRIVE_FOLDER_ID.trim());
+  } else {
+    const iter = DriveApp.getFoldersByName(MAIN_FOLDER_NAME);
+    rootFolder = iter.hasNext() ? iter.next() : DriveApp.createFolder(MAIN_FOLDER_NAME);
+  }
+
+  const gradeFolderName = "Kelas " + grade;
+  const gradeIter = rootFolder.getFoldersByName(gradeFolderName);
+  const gradeFolder = gradeIter.hasNext() ? gradeIter.next() : rootFolder.createFolder(gradeFolderName);
+
+  const classFolderName = "Kelas " + grade + " - " + className;
+  const classIter = gradeFolder.getFoldersByName(classFolderName);
+  const classFolder = classIter.hasNext() ? classIter.next() : gradeFolder.createFolder(classFolderName);
+
+  classFolder.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+  return classFolder;
+}
+
+function getOrCreateMainSheet() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName(SHEET_NAME);
+  if (!sheet) {
+    sheet = ss.insertSheet(SHEET_NAME);
+    sheet.appendRow([
+      "ID", "Kelas", "Folder", "Judul Karya", "Kreator", "Kategori",
+      "Views", "Waktu Upload", "LastOpenedMs", "Video URL", "Thumbnail URL",
+      "Deskripsi Blog", "Drive File ID", "Drive Folder URL"
+    ]);
+    sheet.getRange(1, 1, 1, 14).setFontWeight("bold").setBackground("#bae6fd");
+  }
+  return sheet;
+}
+
+function getOrCreateSpamSheet() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName(SPAM_LOG_SHEET);
+  if (!sheet) {
+    sheet = ss.insertSheet(SPAM_LOG_SHEET);
+    sheet.appendRow(["Waktu Terdeteksi", "Selisih Detik", "ID", "Kelas", "Folder", "Judul Karya", "Kreator", "Views Terakhir"]);
+    sheet.getRange(1, 1, 1, 8).setFontWeight("bold").setBackground("#fde68a");
+  }
+  return sheet;
+}
+
+function sortSheetByHighestViews(sheet) {
+  const lastRow = sheet.getLastRow();
+  if (lastRow > 2) {
+    sheet.getRange(2, 1, lastRow - 1, 14).sort({ column: 7, ascending: false });
+  }
+}
+
+function getAllPostsFromSheet() {
+  const sheet = getOrCreateMainSheet();
+  const rows = sheet.getDataRange().getValues();
+  const list = [];
+  for (let i = 1; i < rows.length; i++) {
+    if (!rows[i][0]) continue;
+    list.push({
+      id: String(rows[i][0]),
+      grade: String(rows[i][1]),
+      folder: String(rows[i][2]),
+      title: String(rows[i][3]),
+      author: String(rows[i][4]),
+      category: String(rows[i][5]),
+      views: Number(rows[i][6]) || 0,
+      createdAt: String(rows[i][7]),
+      lastOpenedAt: Number(rows[i][8]) || 0,
+      videoUrl: String(rows[i][9] || ""),
+      thumbUrl: String(rows[i][10] || ""),
+      description: String(rows[i][11] || ""),
+      driveFileId: String(rows[i][12] || ""),
+      driveFolderUrl: String(rows[i][13] || "")
+    });
+  }
+  return list;
+}
+
+function getAllSpamLogsFromSheet() {
+  const sheet = getOrCreateSpamSheet();
+  const rows = sheet.getDataRange().getValues();
+  const logs = [];
+  for (let i = 1; i < rows.length; i++) {
+    if (!rows[i][0]) continue;
+    logs.push({
+      logId: "spam-" + i,
+      detectedAt: String(rows[i][0]),
+      elapsedSec: String(rows[i][1]),
+      postBackup: {
+        id: String(rows[i][2]),
+        grade: String(rows[i][3]),
+        folder: String(rows[i][4]),
+        title: String(rows[i][5]),
+        author: String(rows[i][6]),
+        views: Number(rows[i][7]) || 1
+      }
+    });
+  }
+  return logs;
+}
+
+function jsonResponse(obj) {
+  return ContentService.createTextOutput(JSON.stringify(obj))
+    .setMimeType(ContentService.MimeType.JSON);
+}</pre>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-16 border-t border-skysoft-200/80 bg-white/60 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slatesoft-600">
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-slatesoft-800">SMP Bodhi Dharma</span>
+                <span>•</span>
+                <span>Portal Gelar Karya & Pameran Seni Siswa</span>
+            </div>
+            <div>
+                Siap Deploy di Vercel • Sistem Anti-Spam 30 Detik Aktif
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const DEFAULT_GAS_URL = "https://script.google.com/macros/s/AKfycby8wi6_5I3W4Xl763ipf9XAwSeYq9ll4pp2LddDalCgUotMCZu2hyoPfeZxfxvRpFUnKA/exec";
+        const ADMIN_SYNC_PASSWORD = "#adminjaiden.sbd";
+
+        const LOCKED_CLASS_FOLDERS = Object.freeze({
+            '7': Object.freeze(['Sanna', 'Nyana', 'Vinnana', 'Sasana']),
+            '8': Object.freeze(['Kusala', 'Manggala', 'Saddha', 'Samodana']),
+            '9': Object.freeze(['Adhika', 'Satti', 'Adhicitta', 'Magga'])
+        });
+
+        const INITIAL_POSTS = [];
+
+        let posts = [];
+        let spamLogs = [];
+        let activeTab = 'home';
+        let selectedGradeFilter = 'ALL';
+        let selectedSubClassFilter = 'ALL';
+        let driveCurrentGrade = null;
+        let driveCurrentFolder = null;
+        let driveLayoutMode = 'grid';
+        let currentOpenPostId = null;
+        let spamPolicy = 'delete_post';
+        let uploadedVideoDataUrl = '';
+        let uploadedThumbDataUrl = '';
+        let selectedVideoFileObj = null;
+        let selectedThumbFileObj = null;
+        let isGasEditUnlocked = false;
+        let pendingPasswordAction = null;
+
+        const STORAGE_POSTS_KEY = 'bd_gelar_karya_posts_clean_v2';
+        const STORAGE_SPAM_KEY = 'bd_gelar_karya_spam_clean_v2';
+        const STORAGE_LOGO_KEY = 'bd_gelar_karya_logo_v1';
+        const STORAGE_WEBHOOK_KEY = 'bd_gelar_karya_webhook_v1';
+
+        function getActiveGasUrl() {
+            const customUrl = localStorage.getItem(STORAGE_WEBHOOK_KEY);
+            if (customUrl && customUrl.trim() !== '') {
+                return customUrl.trim();
+            }
+            return DEFAULT_GAS_URL.trim();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadStateFromStorage();
+            initKineticTypography();
+            initTypewriterEffect();
+            updateFormClassOptions();
+            updateConnectionBannerUI();
+            applyGasLockUI();
+            renderAllViews();
+
+            if (getActiveGasUrl()) {
+                fetchPostsFromGoogleDrive(false);
+            }
+        });
+
+        function loadStateFromStorage() {
+            try {
+                const savedPosts = localStorage.getItem(STORAGE_POSTS_KEY);
+                posts = savedPosts ? JSON.parse(savedPosts) : [...INITIAL_POSTS];
+
+                const savedSpam = localStorage.getItem(STORAGE_SPAM_KEY);
+                spamLogs = savedSpam ? JSON.parse(savedSpam) : [];
+
+                const savedLogo = localStorage.getItem(STORAGE_LOGO_KEY);
+                if (savedLogo) {
+                    applyCustomLogo(savedLogo);
+                }
+
+                document.getElementById('gasWebhookInput').value = getActiveGasUrl();
+            } catch (err) {
+                posts = [];
+                spamLogs = [];
+            }
+        }
+
+        function updateConnectionBannerUI() {
+            const customUrl = localStorage.getItem(STORAGE_WEBHOOK_KEY);
+            const activeUrl = getActiveGasUrl();
+            const dot = document.getElementById('connectionDot');
+            const text = document.getElementById('connectionStatusText');
+
+            if (customUrl && customUrl.trim() !== '') {
+                dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse';
+                text.innerHTML = 'Terhubung ke <strong>Custom URL GAS Admin</strong> • Sinkronisasi Google Drive &amp; Spreadsheet Aktif';
+            } else if (activeUrl) {
+                dot.className = 'w-2.5 h-2.5 rounded-full bg-skysoft-500 animate-pulse';
+                text.innerHTML = 'Terhubung ke <strong>Default URL GAS (Vercel)</strong> • Ketuk Edit URL dengan Password Admin untuk mengubah';
+            } else {
+                dot.className = 'w-2.5 h-2.5 rounded-full bg-amber-400';
+                text.innerHTML = 'Belum terhubung ke URL Google Apps Script';
+            }
+        }
+
+        function requestPasswordForAction(actionName) {
+            if (isGasEditUnlocked) {
+                executeProtectedAction(actionName);
+                return;
+            }
+            pendingPasswordAction = actionName;
+            const modal = document.getElementById('adminPasswordModal');
+            const input = document.getElementById('adminPasswordInput');
+            const err = document.getElementById('passwordErrorMsg');
+            const lockCircle = document.getElementById('passwordLockCircle');
+            const lockIcon = document.getElementById('passwordLockIcon');
+            const badge = document.getElementById('passwordStatusBadge');
+            const bar = document.getElementById('passwordStrengthBar');
+
+            input.value = '';
+            err.classList.add('hidden');
+            bar.style.width = '0%';
+            lockCircle.className = 'relative z-10 w-16 h-16 rounded-2xl bg-gradient-to-br from-skysoft-400 to-skysoft-600 text-white flex items-center justify-center shadow-md transition-all duration-300';
+            lockIcon.className = 'ph-duotone ph-lock-key text-3xl';
+            badge.className = 'inline-block px-3 py-1 rounded-full bg-skysoft-100 text-skysoft-700 text-[11px] font-bold uppercase tracking-wider';
+            badge.textContent = 'Otorisasi Admin SMP Bodhi Dharma';
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => input.focus(), 100);
+        }
+
+        function closePasswordModal() {
+            const modal = document.getElementById('adminPasswordModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            pendingPasswordAction = null;
+        }
+
+        function togglePasswordVisibility() {
+            const input = document.getElementById('adminPasswordInput');
+            const icon = document.getElementById('passwordEyeIcon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.className = 'ph-bold ph-eye-slash text-lg';
+            } else {
+                input.type = 'password';
+                icon.className = 'ph-bold ph-eye text-lg';
+            }
+        }
+
+        function handlePasswordTyping() {
+            const input = document.getElementById('adminPasswordInput');
+            const bar = document.getElementById('passwordStrengthBar');
+            const lockCircle = document.getElementById('passwordLockCircle');
+            const err = document.getElementById('passwordErrorMsg');
+
+            err.classList.add('hidden');
+            const pct = Math.min(100, Math.round((input.value.length / ADMIN_SYNC_PASSWORD.length) * 100));
+            bar.style.width = pct + '%';
+            lockCircle.style.transform = `scale(${1 + (pct / 700)})`;
+        }
+
+        function verifyAdminPassword(event) {
+            event.preventDefault();
+            const input = document.getElementById('adminPasswordInput');
+            const card = document.getElementById('adminPasswordCard');
+            const err = document.getElementById('passwordErrorMsg');
+            const lockCircle = document.getElementById('passwordLockCircle');
+            const lockIcon = document.getElementById('passwordLockIcon');
+            const badge = document.getElementById('passwordStatusBadge');
+
+            if (input.value === ADMIN_SYNC_PASSWORD) {
+                isGasEditUnlocked = true;
+                lockCircle.className = 'relative z-10 w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-400 to-emerald-600 text-white flex items-center justify-center shadow-lg animate-unlock-success';
+                lockIcon.className = 'ph-bold ph-lock-key-open text-3xl';
+                badge.className = 'inline-block px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold uppercase tracking-wider';
+                badge.textContent = '✓ Password Terverifikasi • Akses Terbuka';
+
+                setTimeout(() => {
+                    const actionToRun = pendingPasswordAction;
+                    closePasswordModal();
+                    applyGasLockUI();
+                    executeProtectedAction(actionToRun);
+                    showToast('Akses Admin dibuka! Anda sekarang dapat mengedit & menyinkronkan URL Google Apps Script.', 'info');
+                }, 620);
+            } else {
+                card.classList.remove('animate-shake');
+                void card.offsetWidth;
+                card.classList.add('animate-shake');
+
+                lockCircle.className = 'relative z-10 w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-500 to-rose-600 text-white flex items-center justify-center shadow-md';
+                lockIcon.className = 'ph-bold ph-warning-octagon text-3xl';
+                badge.className = 'inline-block px-3 py-1 rounded-full bg-rose-100 text-rose-800 text-[11px] font-bold uppercase tracking-wider';
+                badge.textContent = 'Verifikasi Gagal';
+                err.classList.remove('hidden');
+            }
+        }
+
+        function executeProtectedAction(actionName) {
+            if (actionName === 'open_modal') {
+                const m = document.getElementById('driveIntegrationModal');
+                m.classList.remove('hidden');
+                m.classList.add('flex');
+                const input = document.getElementById('gasWebhookInput');
+                input.focus();
+            } else if (actionName === 'unlock_edit') {
+                const input = document.getElementById('gasWebhookInput');
+                input.focus();
+                input.select();
+            }
+        }
+
+        function applyGasLockUI() {
+            const input = document.getElementById('gasWebhookInput');
+            const unlockBtn = document.getElementById('unlockEditUrlBtn');
+            const saveBtn = document.getElementById('saveGasUrlBtn');
+            const resetBtn = document.getElementById('resetDefaultUrlBtn');
+            const lockBadge = document.getElementById('urlLockBadge');
+            const lockAdminBtn = document.getElementById('lockAdminBtn');
+            const headerLockIcon = document.getElementById('headerLockIcon');
+
+            input.value = getActiveGasUrl();
+
+            if (isGasEditUnlocked) {
+                input.removeAttribute('readonly');
+                input.className = 'flex-1 px-4 py-2.5 rounded-xl bg-white border-2 border-emerald-400 text-xs sm:text-sm text-slatesoft-800 font-mono focus:outline-none focus:border-skysoft-500 transition-all';
+                unlockBtn.classList.add('hidden');
+                saveBtn.classList.remove('hidden');
+                saveBtn.classList.add('flex');
+                resetBtn.classList.remove('hidden');
+                resetBtn.classList.add('flex');
+                lockAdminBtn.classList.remove('hidden');
+                lockAdminBtn.classList.add('flex');
+                lockBadge.className = 'text-[11px] font-bold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-300 flex items-center gap-1';
+                lockBadge.innerHTML = '<i class="ph-fill ph-lock-key-open"></i> Mode Edit Admin Aktif';
+                headerLockIcon.className = 'ph-bold ph-lock-key-open text-base';
+            } else {
+                input.setAttribute('readonly', 'true');
+                input.className = 'flex-1 px-4 py-2.5 rounded-xl bg-slate-100 border border-skysoft-300 text-xs sm:text-sm text-slatesoft-600 font-mono focus:outline-none cursor-not-allowed transition-all';
+                unlockBtn.classList.remove('hidden');
+                saveBtn.classList.add('hidden');
+                saveBtn.classList.remove('flex');
+                resetBtn.classList.add('hidden');
+                resetBtn.classList.remove('flex');
+                lockAdminBtn.classList.add('hidden');
+                lockAdminBtn.classList.remove('flex');
+                lockBadge.className = 'text-[11px] font-bold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full border border-amber-200 flex items-center gap-1';
+                lockBadge.innerHTML = '<i class="ph-fill ph-lock-key"></i> Terkunci (Read-Only)';
+                headerLockIcon.className = 'ph-bold ph-lock-key text-base';
+            }
+        }
+
+        function lockGasEditing() {
+            isGasEditUnlocked = false;
+            applyGasLockUI();
+            showToast('Pengeditan URL Google Apps Script telah dikunci kembali.', 'info');
+        }
+
+        function resetToDefaultGasUrl() {
+            if (!isGasEditUnlocked) {
+                requestPasswordForAction('unlock_edit');
+                return;
+            }
+            try {
+                localStorage.removeItem(STORAGE_WEBHOOK_KEY);
+            } catch (e) {}
+            document.getElementById('gasWebhookInput').value = DEFAULT_GAS_URL;
+            updateConnectionBannerUI();
+            showToast('URL dikembalikan ke DEFAULT_GAS_URL bawaan Vercel.', 'info');
+        }
+
+        async function fetchPostsFromGoogleDrive(showNotification = false) {
+            const gasUrl = getActiveGasUrl();
+            if (!gasUrl || gasUrl.includes('DEFAULT_SMP_BODHI_DHARMA_DEPLOY_URL')) {
+                if (showNotification) {
+                    showToast('Silakan buka kunci dengan password Admin dan masukkan URL Web App Google Apps Script Anda.', 'warning');
+                    requestPasswordForAction('open_modal');
+                }
+                return;
+            }
+
+            try {
+                if (showNotification) {
+                    showToast('Mengambil data karya terbaru dari Google Drive & Spreadsheet Anda...', 'info');
+                }
+                const response = await fetch(gasUrl + '?action=list&t=' + Date.now());
+                const result = await response.json();
+                if (result && result.status === 'success' && Array.isArray(result.posts)) {
+                    posts = result.posts;
+                    if (Array.isArray(result.spamLogs)) {
+                        spamLogs = result.spamLogs;
+                    }
+                    saveStateToStorage();
+                    renderAllViews();
+                    if (showNotification) {
+                        showToast(`Berhasil memuat ${posts.length} karya dari Google Drive & Spreadsheet Anda!`, 'info');
+                    }
+                }
+            } catch (err) {
+                if (showNotification) {
+                    showToast('Gagal memuat dari Google Sheet. Pastikan Web App di-deploy dengan akses "Anyone".', 'warning');
+                }
+            }
+        }
+
+        function saveStateToStorage() {
+            try {
+                localStorage.setItem(STORAGE_POSTS_KEY, JSON.stringify(posts));
+                localStorage.setItem(STORAGE_SPAM_KEY, JSON.stringify(spamLogs));
+            } catch (e) {}
+        }
+
+        function initKineticTypography() {
+            const titleEl = document.getElementById('kineticTitle');
+            if (!titleEl) return;
+            const words = titleEl.innerText.split(' ');
+            titleEl.innerHTML = words.map((word, idx) => 
+                `<span class="kinetic-char mr-2" style="animation-delay: ${idx * 0.18}s">${word}</span>`
+            ).join('');
+        }
+
+        function initTypewriterEffect() {
+            const phrases = [
+                'Gelar Karya SMP Bodhi Dharma',
+                'Pameran Seni Kelas 7, 8 & 9',
+                'Wadah Ekspresi & Apresiasi Siswa',
+                'Karya Terbaik Menuju Puncak Klasemen!'
+            ];
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            const el = document.getElementById('typewriterText');
+
+            function tick() {
+                const currentPhrase = phrases[phraseIndex];
+                if (isDeleting) {
+                    charIndex--;
+                } else {
+                    charIndex++;
+                }
+
+                el.textContent = currentPhrase.substring(0, charIndex);
+
+                let speed = isDeleting ? 40 : 85;
+                if (!isDeleting && charIndex === currentPhrase.length) {
+                    speed = 2400;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    speed = 400;
+                }
+                setTimeout(tick, speed);
+            }
+            setTimeout(tick, 1500);
+        }
+
+        function triggerLogoUpload() {
+            document.getElementById('logoFileInput').click();
+        }
+
+        function handleLogoChange(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const dataUrl = e.target.result;
+                applyCustomLogo(dataUrl);
+                try {
+                    localStorage.setItem(STORAGE_LOGO_KEY, dataUrl);
+                } catch (err) {}
+                showToast('Logo sekolah di pojok kiri atas berhasil diperbarui!', 'info');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function applyCustomLogo(dataUrl) {
+            const img = document.getElementById('customLogoImg');
+            const svg = document.getElementById('defaultLogoSvg');
+            img.src = dataUrl;
+            img.classList.remove('hidden');
+            svg.classList.add('hidden');
+        }
+
+        function switchTab(tabName) {
+            activeTab = tabName;
+            const tabs = ['home', 'drive', 'upload', 'spreadsheet'];
+            const labels = {
+                home: '• Beranda Pameran',
+                drive: '• Folder Drive Kelas',
+                upload: '• Upload & Post Karya',
+                spreadsheet: '• Data Spreadsheet & View'
+            };
+
+            tabs.forEach(t => {
+                const panel = document.getElementById(`tab-${t}`);
+                const btn = document.getElementById(`tabBtn-${t}`);
+                if (t === tabName) {
+                    panel.classList.remove('hidden');
+                    btn.className = 'nav-tab-btn flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-skysoft-700 shadow-sm';
+                } else {
+                    panel.classList.add('hidden');
+                    btn.className = 'nav-tab-btn flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-slatesoft-600 hover:text-skysoft-700 hover:bg-white/50';
+                }
+            });
+
+            document.getElementById('activeTabBadge').textContent = labels[tabName] || '';
+            renderAllViews();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderAllViews() {
+            updateHeroStats();
+            renderTopLeaderboard();
+            renderSubClassFilterBar();
+            renderHomeGallery();
+            renderDriveExplorer();
+            renderSpreadsheetTable();
+        }
+
+        function updateHeroStats() {
+            const totalVideos = posts.length;
+            const totalViews = posts.reduce((acc, p) => acc + (Number(p.views) || 0), 0);
+            document.getElementById('statTotalVideos').textContent = totalVideos;
+            document.getElementById('statTotalViews').textContent = totalViews.toLocaleString('id-ID');
+
+            const spamBadge = document.getElementById('spamBadgeCount');
+            if (spamLogs.length > 0) {
+                spamBadge.textContent = spamLogs.length;
+                spamBadge.classList.remove('hidden');
+            } else {
+                spamBadge.classList.add('hidden');
+            }
+        }
+
+        function getArtworkThumbnailHtml(post) {
+            if (post.thumbUrl && post.thumbUrl.trim() !== '') {
+                return `<img src="${post.thumbUrl}" alt="${escapeHtml(post.title)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x340/e0f2fe/0284c7?text=Karya+SMP+Bodhi+Dharma'">`;
+            }
+            const c1 = (post.palette && post.palette[0]) || '#0284c7';
+            const c2 = (post.palette && post.palette[1]) || '#38bdf8';
+            return `
+                <div class="w-full h-full flex flex-col justify-between p-4 text-white relative overflow-hidden group-hover:scale-105 transition-transform duration-500"
+                     style="background: linear-gradient(135deg, ${c1} 0%, ${c2} 100%);">
+                    <div class="absolute -right-8 -bottom-8 w-32 h-32 rounded-full bg-white/15 blur-md"></div>
+                    <div class="flex items-center justify-between text-[11px] font-semibold opacity-90">
+                        <span>SMP Bodhi Dharma</span>
+                        <span>Kelas ${post.grade} ${post.folder}</span>
+                    </div>
+                    <div class="my-auto py-2">
+                        <p class="font-display text-base font-bold leading-snug line-clamp-2 drop-shadow-sm">${escapeHtml(post.title)}</p>
+                    </div>
+                    <div class="flex items-center justify-between text-[11px] opacity-90">
+                        <span class="truncate max-w-[75%]">${escapeHtml(post.category)}</span>
+                        <i class="ph-fill ph-play-circle text-2xl"></i>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderTopLeaderboard() {
+            const container = document.getElementById('topLeaderboardGrid');
+            const sortedByViews = [...posts].sort((a, b) => b.views - a.views).slice(0, 3);
+
+            if (sortedByViews.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-3 sky-card rounded-3xl p-8 text-center space-y-3 border border-dashed border-skysoft-300">
+                        <div class="w-12 h-12 rounded-2xl bg-skysoft-100 text-skysoft-600 mx-auto flex items-center justify-center">
+                            <i class="ph-duotone ph-trophy text-2xl"></i>
+                        </div>
+                        <h4 class="font-display text-base sm:text-lg font-bold text-slatesoft-800">Papan Peringkat Masih Kosong (0 Video)</h4>
+                        <p class="text-xs text-slatesoft-600 max-w-lg mx-auto">
+                            Belum ada karya yang diunggah. Saat siswa mengunggah video karya seni mereka, 3 karya dengan jumlah penonton (view) tertinggi akan otomatis tampil paling atas di sini!
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+
+            const medals = [
+                { label: 'Peringkat #1 Paling Up', bg: 'bg-amber-100 text-amber-800 border-amber-300', icon: '👑' },
+                { label: 'Peringkat #2 Terpopuler', bg: 'bg-skysoft-100 text-skysoft-800 border-skysoft-300', icon: '🥈' },
+                { label: 'Peringkat #3 Terpopuler', bg: 'bg-emerald-50 text-emerald-800 border-emerald-200', icon: '🥉' }
+            ];
+
+            container.innerHTML = sortedByViews.map((post, idx) => {
+                const medal = medals[idx];
+                return `
+                    <div onclick="openVideoModal('${post.id}')" class="sky-card rounded-3xl overflow-hidden cursor-pointer group flex flex-col justify-between">
+                        <div>
+                            <div class="relative aspect-video w-full overflow-hidden bg-skysoft-100">
+                                ${getArtworkThumbnailHtml(post)}
+                                <div class="absolute top-3 left-3 px-3 py-1 rounded-xl text-xs font-bold border shadow-sm ${medal.bg}">
+                                    ${medal.icon} ${medal.label}
+                                </div>
+                                <div class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-slate-900/75 text-white text-xs font-bold flex items-center gap-1.5 backdrop-blur-sm">
+                                    <i class="ph-fill ph-eye text-sky-300"></i>
+                                    <span>${post.views} Views</span>
+                                </div>
+                            </div>
+                            <div class="p-5 space-y-2">
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="px-2.5 py-0.5 rounded-lg bg-skysoft-100 text-skysoft-700 font-bold">
+                                        Kelas ${post.grade} ${post.folder}
+                                    </span>
+                                    <span class="text-slatesoft-600 truncate max-w-[50%]">${escapeHtml(post.category)}</span>
+                                </div>
+                                <h4 class="font-display text-lg font-bold text-slatesoft-800 group-hover:text-skysoft-600 transition-colors line-clamp-1">
+                                    ${escapeHtml(post.title)}
+                                </h4>
+                                <p class="text-xs text-slatesoft-600 line-clamp-2 leading-relaxed">
+                                    ${escapeHtml(post.description)}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="px-5 py-3 bg-skysoft-50/60 border-t border-skysoft-100 flex items-center justify-between text-xs text-slatesoft-600">
+                            <span class="truncate">Oleh: <strong class="text-slatesoft-700">${escapeHtml(post.author)}</strong></span>
+                            <span class="text-skysoft-600 font-semibold flex items-center gap-1 shrink-0">
+                                Tonton <i class="ph-bold ph-arrow-right"></i>
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function setGradeFilter(grade) {
+            selectedGradeFilter = grade;
+            selectedSubClassFilter = 'ALL';
+
+            ['ALL', '7', '8', '9'].forEach(g => {
+                const btn = document.getElementById(`gradeFilter-${g}`);
+                if (g === grade) {
+                    btn.className = 'grade-pill px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-skysoft-500 text-white shadow-sm transition-all';
+                } else {
+                    btn.className = 'grade-pill px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-skysoft-50 text-slatesoft-700 hover:bg-skysoft-100 border border-skysoft-200 transition-all';
+                }
+            });
+
+            renderSubClassFilterBar();
+            renderHomeGallery();
+        }
+
+        function setSubClassFilter(subClass) {
+            selectedSubClassFilter = subClass;
+            renderSubClassFilterBar();
+            renderHomeGallery();
+        }
+
+        function renderSubClassFilterBar() {
+            const bar = document.getElementById('subClassFilterBar');
+            let foldersToShow = [];
+
+            if (selectedGradeFilter === 'ALL') {
+                Object.entries(LOCKED_CLASS_FOLDERS).forEach(([grade, list]) => {
+                    list.forEach(name => foldersToShow.push({ grade, name }));
+                });
+            } else {
+                (LOCKED_CLASS_FOLDERS[selectedGradeFilter] || []).forEach(name => {
+                    foldersToShow.push({ grade: selectedGradeFilter, name });
+                });
+            }
+
+            const allBtnClass = selectedSubClassFilter === 'ALL'
+                ? 'bg-skysoft-700 text-white'
+                : 'bg-white text-slatesoft-600 hover:bg-skysoft-50 border border-skysoft-200';
+
+            let html = `
+                <span class="text-xs font-semibold text-slatesoft-600 mr-1">Folder Kelas:</span>
+                <button onclick="setSubClassFilter('ALL')" class="px-3 py-1 rounded-lg text-xs font-semibold transition-all ${allBtnClass}">
+                    Semua Folder
+                </button>
+            `;
+
+            html += foldersToShow.map(item => {
+                const active = selectedSubClassFilter === item.name;
+                const cls = active
+                    ? 'bg-skysoft-600 text-white shadow-sm'
+                    : 'bg-white text-slatesoft-700 hover:bg-skysoft-50 border border-skysoft-200';
+                return `
+                    <button onclick="setSubClassFilter('${item.name}')" class="px-3 py-1 rounded-lg text-xs font-semibold transition-all flex items-center gap-1 ${cls}">
+                        <i class="ph-fill ph-folder text-skysoft-400"></i>
+                        <span>${item.grade} ${item.name}</span>
+                    </button>
+                `;
+            }).join('');
+
+            bar.innerHTML = html;
+        }
+
+        function renderHomeGallery() {
+            const grid = document.getElementById('homeGalleryGrid');
+            const query = (document.getElementById('searchInput')?.value || '').toLowerCase().trim();
+            const sortBy = document.getElementById('sortSelect')?.value || 'views_desc';
+
+            let filtered = posts.filter(post => {
+                const matchGrade = selectedGradeFilter === 'ALL' || post.grade === selectedGradeFilter;
+                const matchFolder = selectedSubClassFilter === 'ALL' || post.folder === selectedSubClassFilter;
+                const matchSearch = !query ||
+                    post.title.toLowerCase().includes(query) ||
+                    post.author.toLowerCase().includes(query) ||
+                    post.folder.toLowerCase().includes(query) ||
+                    post.category.toLowerCase().includes(query);
+                return matchGrade && matchFolder && matchSearch;
+            });
+
+            if (sortBy === 'views_desc') {
+                filtered.sort((a, b) => b.views - a.views);
+            } else if (sortBy === 'newest') {
+                filtered.sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+            } else if (sortBy === 'class_asc') {
+                filtered.sort((a, b) => (a.grade + a.folder).localeCompare(b.grade + b.folder));
+            }
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full sky-card rounded-3xl p-10 text-center space-y-4">
+                        <div class="w-16 h-16 rounded-2xl bg-skysoft-100 text-skysoft-600 mx-auto flex items-center justify-center">
+                            <i class="ph-duotone ph-video-camera-slash text-3xl"></i>
+                        </div>
+                        <h4 class="font-display text-lg font-bold text-slatesoft-800">Belum Ada Video Karya di Kategori Ini</h4>
+                        <p class="text-xs sm:text-sm text-slatesoft-600 max-w-md mx-auto">
+                            Galeri masih bersih atau belum ada karya untuk filter kelas ini. Jadilah yang pertama mengunggah video karya seni!
+                        </p>
+                        <button onclick="switchTab('upload')" class="px-5 py-2.5 rounded-xl bg-skysoft-500 hover:bg-skysoft-600 text-white text-xs sm:text-sm font-semibold shadow-sm">
+                            + Upload Karya Sekarang
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(post => `
+                <article onclick="openVideoModal('${post.id}')" class="sky-card rounded-3xl overflow-hidden cursor-pointer group flex flex-col justify-between">
+                    <div>
+                        <div class="relative aspect-video w-full overflow-hidden bg-skysoft-100">
+                            ${getArtworkThumbnailHtml(post)}
+                            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-white/90 backdrop-blur text-skysoft-800 text-xs font-bold shadow-sm">
+                                📁 Kelas ${post.grade} ${post.folder}
+                            </div>
+                            <div class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-slate-900/75 text-white text-xs font-semibold flex items-center gap-1">
+                                <i class="ph-fill ph-eye text-sky-300"></i>
+                                <span>${post.views}</span>
+                            </div>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <div class="text-[11px] font-medium text-skysoft-700">${escapeHtml(post.category)}</div>
+                            <h4 class="font-display text-base font-bold text-slatesoft-800 group-hover:text-skysoft-600 transition-colors line-clamp-2">
+                                ${escapeHtml(post.title)}
+                            </h4>
+                            <p class="text-xs text-slatesoft-600 line-clamp-2 leading-relaxed">
+                                ${escapeHtml(post.description)}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-5 py-3 bg-skysoft-50/50 border-t border-skysoft-100 flex items-center justify-between text-xs text-slatesoft-600">
+                        <span class="truncate font-medium">${escapeHtml(post.author)}</span>
+                        <span class="text-skysoft-600 font-semibold shrink-0">Buka Blog & Video →</span>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        function setDriveLayout(mode) {
+            driveLayoutMode = mode;
+            document.getElementById('driveLayoutGrid').className = mode === 'grid'
+                ? 'p-2 rounded-lg bg-skysoft-100 text-skysoft-700'
+                : 'p-2 rounded-lg hover:bg-skysoft-50 text-slatesoft-600';
+            document.getElementById('driveLayoutList').className = mode === 'list'
+                ? 'p-2 rounded-lg bg-skysoft-100 text-skysoft-700'
+                : 'p-2 rounded-lg hover:bg-skysoft-50 text-slatesoft-600';
+            renderDriveExplorer();
+        }
+
+        function navigateDrive(grade, folder) {
+            driveCurrentGrade = grade;
+            driveCurrentFolder = folder;
+            renderDriveExplorer();
+        }
+
+        function renderDriveExplorer() {
+            const breadcrumbEl = document.getElementById('driveBreadcrumb');
+            const contentEl = document.getElementById('driveExplorerContent');
+
+            let bcHtml = `
+                <button onclick="navigateDrive(null, null)" class="hover:text-skysoft-600 flex items-center gap-1.5">
+                    <i class="ph-duotone ph-google-drive-logo text-lg text-skysoft-600"></i>
+                    <span>Drive Pameran SMP Bodhi Dharma</span>
+                </button>
+            `;
+            if (driveCurrentGrade) {
+                bcHtml += `<i class="ph-bold ph-caret-right text-xs text-slatesoft-600"></i>
+                    <button onclick="navigateDrive('${driveCurrentGrade}', null)" class="hover:text-skysoft-600">
+                        Folder Kelas ${driveCurrentGrade}
+                    </button>`;
+            }
+            if (driveCurrentFolder) {
+                bcHtml += `<i class="ph-bold ph-caret-right text-xs text-slatesoft-600"></i>
+                    <span class="text-skysoft-700 bg-skysoft-100 px-2.5 py-0.5 rounded-lg">
+                        ${driveCurrentGrade} ${driveCurrentFolder}
+                    </span>`;
+            }
+            breadcrumbEl.innerHTML = bcHtml;
+
+            if (!driveCurrentGrade) {
+                contentEl.innerHTML = ['7', '8', '9'].map(grade => {
+                    const subfolders = LOCKED_CLASS_FOLDERS[grade];
+                    const gradePosts = posts.filter(p => p.grade === grade);
+                    return `
+                        <div class="sky-card rounded-3xl p-6 space-y-4">
+                            <div class="flex items-center justify-between border-b border-skysoft-100 pb-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-2xl bg-skysoft-100 text-skysoft-600 flex items-center justify-center">
+                                        <i class="ph-fill ph-folder-notch text-2xl"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-display text-lg font-bold text-slatesoft-800">Induk Folder Kelas ${grade}</h3>
+                                        <p class="text-xs text-slatesoft-600">4 Sub-Folder Kelas Terkunci • ${gradePosts.length} Video Tersimpan</p>
+                                    </div>
+                                </div>
+                                <span class="text-[11px] text-slatesoft-600 bg-skysoft-50 px-2.5 py-1 rounded-lg border border-skysoft-200">
+                                    🔒 Permanen
+                                </span>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                                ${subfolders.map(folder => {
+                                    const folderPosts = posts.filter(p => p.grade === grade && p.folder === folder);
+                                    const folderViews = folderPosts.reduce((sum, p) => sum + p.views, 0);
+                                    return `
+                                        <div onclick="navigateDrive('${grade}', '${folder}')"
+                                             class="p-4 rounded-2xl bg-skysoft-50/70 hover:bg-skysoft-100/80 border border-skysoft-200 cursor-pointer transition-all group flex flex-col justify-between gap-3">
+                                            <div class="flex items-start justify-between">
+                                                <div class="w-11 h-11 rounded-xl bg-white border border-skysoft-200 flex items-center justify-center text-skysoft-600 group-hover:scale-105 transition-transform shadow-sm">
+                                                    <i class="ph-duotone ph-folder-open text-2xl"></i>
+                                                </div>
+                                                <span class="px-2 py-0.5 rounded-md bg-white text-slatesoft-600 text-[11px] font-semibold border border-skysoft-100">
+                                                    ${folderPosts.length} File
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-display text-base font-bold text-slatesoft-800 group-hover:text-skysoft-700">
+                                                    Kelas ${grade} ${folder}
+                                                </h4>
+                                                <p class="text-[11px] text-slatesoft-600 mt-0.5">
+                                                    Total ${folderViews} tayangan
+                                                </p>
+                                            </div>
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                return;
+            }
+
+            if (driveCurrentGrade && !driveCurrentFolder) {
+                const subfolders = LOCKED_CLASS_FOLDERS[driveCurrentGrade];
+                contentEl.innerHTML = `
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                        ${subfolders.map(folder => {
+                            const folderPosts = posts.filter(p => p.grade === driveCurrentGrade && p.folder === folder);
+                            return `
+                                <div onclick="navigateDrive('${driveCurrentGrade}', '${folder}')"
+                                     class="sky-card p-5 rounded-3xl cursor-pointer group space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <i class="ph-duotone ph-folder-notch-open text-4xl text-skysoft-500"></i>
+                                        <span class="text-xs font-bold text-skysoft-700 bg-skysoft-100 px-2.5 py-1 rounded-lg">${folderPosts.length} Video</span>
+                                    </div>
+                                    <h4 class="font-display text-lg font-bold text-slatesoft-800">Kelas ${driveCurrentGrade} ${folder}</h4>
+                                    <p class="text-xs text-slatesoft-600">Klik untuk membuka isi drive kelas ${driveCurrentGrade} ${folder}</p>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+                return;
+            }
+
+            const folderFiles = posts
+                .filter(p => p.grade === driveCurrentGrade && p.folder === driveCurrentFolder)
+                .sort((a, b) => b.views - a.views);
+
+            if (folderFiles.length === 0) {
+                contentEl.innerHTML = `
+                    <div class="sky-card rounded-3xl p-10 text-center space-y-4">
+                        <div class="w-16 h-16 rounded-2xl bg-skysoft-100 text-skysoft-600 mx-auto flex items-center justify-center">
+                            <i class="ph-duotone ph-folder-open text-3xl"></i>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-slatesoft-800">Folder Kelas ${driveCurrentGrade} ${driveCurrentFolder} Masih Kosong</h3>
+                        <p class="text-xs sm:text-sm text-slatesoft-600 max-w-md mx-auto">
+                            Belum ada siswa dari Kelas ${driveCurrentGrade} ${driveCurrentFolder} yang mengunggah video karya.
+                        </p>
+                        <button onclick="openUploadForSpecificFolder('${driveCurrentGrade}', '${driveCurrentFolder}')"
+                                class="px-5 py-2.5 rounded-xl bg-skysoft-500 hover:bg-skysoft-600 text-white text-xs sm:text-sm font-semibold shadow-sm">
+                            + Upload Karya ke Kelas ${driveCurrentGrade} ${driveCurrentFolder}
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            if (driveLayoutMode === 'list') {
+                contentEl.innerHTML = `
+                    <div class="sky-card rounded-3xl overflow-hidden">
+                        <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                            <thead>
+                                <tr class="bg-skysoft-50 border-b border-skysoft-200 text-slatesoft-700">
+                                    <th class="py-3 px-4">Nama File / Judul Karya</th>
+                                    <th class="py-3 px-4">Kreator</th>
+                                    <th class="py-3 px-4">Kategori</th>
+                                    <th class="py-3 px-4">Penonton</th>
+                                    <th class="py-3 px-4 text-right">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-skysoft-100">
+                                ${folderFiles.map(file => `
+                                    <tr onclick="openVideoModal('${file.id}')" class="hover:bg-skysoft-50/70 cursor-pointer">
+                                        <td class="py-3.5 px-4 font-semibold text-slatesoft-800 flex items-center gap-2">
+                                            <i class="ph-duotone ph-file-video text-lg text-skysoft-600"></i>
+                                            <span>${escapeHtml(file.title)}</span>
+                                        </td>
+                                        <td class="py-3.5 px-4 text-slatesoft-600">${escapeHtml(file.author)}</td>
+                                        <td class="py-3.5 px-4 text-slatesoft-600">${escapeHtml(file.category)}</td>
+                                        <td class="py-3.5 px-4 font-bold text-skysoft-700">${file.views} Views</td>
+                                        <td class="py-3.5 px-4 text-right">
+                                            <span class="px-3 py-1 rounded-lg bg-skysoft-100 text-skysoft-700 text-xs font-semibold">Buka</span>
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            } else {
+                contentEl.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-semibold text-slatesoft-600">Menampilkan ${folderFiles.length} file video di Folder Kelas ${driveCurrentGrade} ${driveCurrentFolder}</span>
+                        <button onclick="openUploadForSpecificFolder('${driveCurrentGrade}', '${driveCurrentFolder}')"
+                                class="text-xs font-semibold text-skysoft-700 hover:underline flex items-center gap-1">
+                            <i class="ph-bold ph-plus"></i> Tambah Video ke Folder Ini
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                        ${folderFiles.map(file => `
+                            <div onclick="openVideoModal('${file.id}')" class="sky-card rounded-3xl overflow-hidden cursor-pointer group">
+                                <div class="aspect-video w-full relative overflow-hidden bg-skysoft-100">
+                                    ${getArtworkThumbnailHtml(file)}
+                                    <div class="absolute bottom-2.5 right-2.5 px-2.5 py-1 rounded-lg bg-slate-900/75 text-white text-xs font-bold">
+                                        ${file.views} Views
+                                    </div>
+                                </div>
+                                <div class="p-4 space-y-1.5">
+                                    <div class="flex items-center gap-1.5 text-xs text-skysoft-700 font-semibold">
+                                        <i class="ph-fill ph-file-video"></i>
+                                        <span>${escapeHtml(file.category)}</span>
+                                    </div>
+                                    <h4 class="font-display text-base font-bold text-slatesoft-800 line-clamp-1">${escapeHtml(file.title)}</h4>
+                                    <p class="text-xs text-slatesoft-600 line-clamp-2">${escapeHtml(file.description)}</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+        }
+
+        function openUploadForSpecificFolder(grade, folder) {
+            switchTab('upload');
+            document.getElementById('formGrade').value = grade;
+            updateFormClassOptions();
+            document.getElementById('formClassFolder').value = folder;
+        }
+
+        function updateFormClassOptions() {
+            const grade = document.getElementById('formGrade').value;
+            const folderSelect = document.getElementById('formClassFolder');
+            const options = LOCKED_CLASS_FOLDERS[grade] || [];
+            folderSelect.innerHTML = options.map(f => `<option value="${f}">Folder Kelas ${grade} ${f}</option>`).join('');
+        }
+
+        function handleVideoFilePreview(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            selectedVideoFileObj = file;
+            const sizeMB = (file.size / (1024 * 1024)).toFixed(1);
+            document.getElementById('videoFileName').textContent = `✓ Terpilih: ${file.name} (${sizeMB} MB)`;
+            uploadedVideoDataUrl = URL.createObjectURL(file);
+        }
+
+        function handleThumbFilePreview(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            selectedThumbFileObj = file;
+            document.getElementById('thumbFileName').textContent = `✓ Sampul: ${file.name}`;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                uploadedThumbDataUrl = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const result = String(reader.result || '');
+                    const base64Clean = result.includes(',') ? result.split(',')[1] : result;
+                    resolve(base64Clean);
+                };
+                reader.onerror = err => reject(err);
+                reader.readAsDataURL(file);
+            });
+        }
+
+        async function handlePostSubmit(event) {
+            event.preventDefault();
+
+            const grade = document.getElementById('formGrade').value;
+            const folder = document.getElementById('formClassFolder').value;
+
+            if (!LOCKED_CLASS_FOLDERS[grade] || !LOCKED_CLASS_FOLDERS[grade].includes(folder)) {
+                showToast('Folder kelas tidak valid!', 'error');
+                return;
+            }
+
+            const title = document.getElementById('formTitle').value.trim();
+            const author = document.getElementById('formAuthor').value.trim();
+            const category = document.getElementById('formCategory').value;
+            const description = document.getElementById('formDescription').value.trim();
+            const videoUrlInput = document.getElementById('formVideoUrl').value.trim();
+            const thumbUrlInput = document.getElementById('formThumbUrl').value.trim();
+
+            const submitBtn = document.getElementById('submitPostBtn');
+            const progressBox = document.getElementById('uploadProgressBox');
+            const progressBar = document.getElementById('uploadProgressBar');
+            const progressPercent = document.getElementById('uploadProgressPercent');
+
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-60', 'cursor-not-allowed');
+            progressBox.classList.remove('hidden');
+            progressBar.style.width = '25%';
+            progressPercent.textContent = '25%';
+
+            const now = new Date();
+            const formattedDate = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+            const postId = 'bd-art-' + Date.now();
+
+            let newPost = {
+                id: postId,
+                grade,
+                folder,
+                title,
+                author,
+                category,
+                views: 1,
+                createdAt: formattedDate,
+                lastOpenedAt: 0,
+                thumbUrl: uploadedThumbDataUrl || thumbUrlInput || '',
+                videoUrl: uploadedVideoDataUrl || videoUrlInput || '',
+                palette: ['#0284c7', '#38bdf8'],
+                description
+            };
+
+            const gasUrl = getActiveGasUrl();
+            if (gasUrl && !gasUrl.includes('DEFAULT_SMP_BODHI_DHARMA_DEPLOY_URL')) {
+                try {
+                    let videoBase64 = '';
+                    let videoName = '';
+                    let videoMimeType = '';
+                    if (selectedVideoFileObj) {
+                        progressBar.style.width = '50%';
+                        progressPercent.textContent = '50%';
+                        videoBase64 = await fileToBase64(selectedVideoFileObj);
+                        videoName = selectedVideoFileObj.name;
+                        videoMimeType = selectedVideoFileObj.type || 'video/mp4';
+                    }
+
+                    let thumbBase64 = '';
+                    let thumbName = '';
+                    let thumbMimeType = '';
+                    if (selectedThumbFileObj) {
+                        progressBar.style.width = '75%';
+                        progressPercent.textContent = '75%';
+                        thumbBase64 = await fileToBase64(selectedThumbFileObj);
+                        thumbName = selectedThumbFileObj.name;
+                        thumbMimeType = selectedThumbFileObj.type || 'image/jpeg';
+                    }
+
+                    progressBar.style.width = '90%';
+                    progressPercent.textContent = '90%';
+
+                    const response = await fetch(gasUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                        body: JSON.stringify({
+                            action: 'upload',
+                            ...newPost,
+                            videoUrl: videoUrlInput,
+                            thumbUrl: thumbUrlInput,
+                            videoBase64,
+                            videoName,
+                            videoMimeType,
+                            thumbBase64,
+                            thumbName,
+                            thumbMimeType
+                        })
+                    });
+
+                    const result = await response.json();
+                    if (result && result.status === 'success' && result.post) {
+                        newPost = {
+                            ...newPost,
+                            ...result.post,
+                            thumbUrl: result.post.thumbUrl || newPost.thumbUrl,
+                            videoUrl: result.post.videoUrl || newPost.videoUrl
+                        };
+                    }
+                } catch (err) {
+                    showToast('File disimpan di sesi web. Pastikan kuota/ukuran file sesuai batas Apps Script.', 'info');
+                }
+            }
+
+            progressBar.style.width = '100%';
+            progressPercent.textContent = '100%';
+
+            posts.unshift(newPost);
+            saveStateToStorage();
+
+            document.getElementById('uploadForm').reset();
+            uploadedVideoDataUrl = '';
+            uploadedThumbDataUrl = '';
+            selectedVideoFileObj = null;
+            selectedThumbFileObj = null;
+            document.getElementById('videoFileName').textContent = 'Pilih File Video dari Perangkat';
+            document.getElementById('thumbFileName').textContent = 'Upload Gambar Thumbnail';
+            progressBox.classList.add('hidden');
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-60', 'cursor-not-allowed');
+            updateFormClassOptions();
+
+            driveCurrentGrade = grade;
+            driveCurrentFolder = folder;
+
+            showUploadSuccessModal(newPost);
+            renderAllViews();
+        }
+
+        function showUploadSuccessModal(post) {
+            const modal = document.getElementById('uploadSuccessModal');
+            const detail = document.getElementById('uploadSuccessDetail');
+            detail.innerHTML = `Karya <strong>"${escapeHtml(post.title)}"</strong> oleh <strong>${escapeHtml(post.author)}</strong> berhasil masuk ke <strong>Folder Kelas ${post.grade} ${post.folder}</strong> dan tercatat di Spreadsheet.`;
+
+            const confettiBox = document.getElementById('confettiContainer');
+            const colors = ['#38bdf8', '#0284c7', '#34d399', '#fbbf24', '#60a5fa'];
+            let pieces = '';
+            for (let i = 0; i < 28; i++) {
+                const left = Math.floor(Math.random() * 95);
+                const delay = (Math.random() * 0.5).toFixed(2);
+                const color = colors[i % colors.length];
+                pieces += `<div class="confetti-piece" style="left:${left}%; top:-10px; background:${color}; animation-delay:${delay}s;"></div>`;
+            }
+            confettiBox.innerHTML = pieces;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeUploadSuccessModal(targetTab) {
+            const modal = document.getElementById('uploadSuccessModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            switchTab(targetTab);
+        }
+
+        function openVideoModal(postId) {
+            const postIndex = posts.findIndex(p => p.id === postId);
+            if (postIndex === -1) return;
+
+            const post = posts[postIndex];
+            const nowMs = Date.now();
+            const diffSeconds = post.lastOpenedAt ? (nowMs - post.lastOpenedAt) / 1000 : 9999;
+
+            if (diffSeconds < 30) {
+                handleSpamDetected(post, diffSeconds.toFixed(1));
+                return;
+            }
+
+            post.lastOpenedAt = nowMs;
+            post.views = (Number(post.views) || 0) + 1;
+            currentOpenPostId = post.id;
+
+            saveStateToStorage();
+            renderAllViews();
+            syncViewOrSpamToGoogleSheet(post.id);
+
+            document.getElementById('modalFolderBadge').textContent = `📁 Kelas ${post.grade} ${post.folder}`;
+            document.getElementById('modalCategoryBadge').textContent = post.category;
+            document.getElementById('modalTitle').textContent = post.title;
+            document.getElementById('modalAuthor').textContent = post.author;
+            document.getElementById('modalDate').textContent = post.createdAt;
+            document.getElementById('modalViews').textContent = post.views;
+            document.getElementById('modalDescription').textContent = post.description;
+            document.getElementById('modalDrivePath').textContent = `Drive Saya / SMP Bodhi Dharma / Kelas ${post.grade} / ${post.folder}`;
+
+            const playerBox = document.getElementById('modalPlayerContainer');
+            if (post.videoUrl && post.videoUrl.includes('drive.google.com')) {
+                const embedUrl = post.videoUrl.replace('/view', '/preview');
+                playerBox.innerHTML = `<iframe src="${embedUrl}" class="w-full h-full border-0" allow="autoplay"></iframe>`;
+            } else if (post.videoUrl && post.videoUrl.trim() !== '') {
+                playerBox.innerHTML = `
+                    <video src="${post.videoUrl}" controls autoplay class="w-full h-full object-contain bg-black"></video>
+                `;
+            } else {
+                playerBox.innerHTML = `
+                    <div class="w-full h-full flex flex-col items-center justify-center text-center p-6 text-white relative"
+                         style="background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 50%, #38bdf8 100%);">
+                        <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center mb-3 animate-pulse">
+                            <i class="ph-fill ph-play text-3xl text-white"></i>
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-white/15 text-xs font-semibold mb-2">
+                            Pemutar Video Pameran SMP Bodhi Dharma • Kelas ${post.grade} ${post.folder}
+                        </span>
+                        <h3 class="font-display text-lg sm:text-2xl font-bold max-w-xl">${escapeHtml(post.title)}</h3>
+                        <p class="text-xs text-sky-100 mt-1">Kreator: ${escapeHtml(post.author)}</p>
+                    </div>
+                `;
+            }
+
+            const modal = document.getElementById('videoModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function testRapidSpamClick() {
+            if (!currentOpenPostId) return;
+            closeVideoModal();
+            setTimeout(() => {
+                openVideoModal(currentOpenPostId);
+            }, 150);
+        }
+
+        function handleSpamDetected(post, elapsedSec) {
+            const logItem = {
+                logId: 'spam-' + Date.now(),
+                detectedAt: new Date().toLocaleTimeString('id-ID'),
+                elapsedSec,
+                postBackup: { ...post }
+            };
+            spamLogs.unshift(logItem);
+
+            syncViewOrSpamToGoogleSheet(post.id);
+
+            if (spamPolicy === 'delete_post') {
+                posts = posts.filter(p => p.id !== post.id);
+                showToast(
+                    `⚠️ Terdeteksi Spam! Video "${post.title}" dibuka kembali dalam ${elapsedSec} detik (< 30 detik). Sesuai aturan pameran, data terindikasi spam otomatis dihapus dari Galeri & Spreadsheet.`,
+                    'warning'
+                );
+            } else {
+                showToast(
+                    `⚠️ Bukaan berulang dalam ${elapsedSec} detik (< 30 detik) terdeteksi pada "${post.title}". Tambahan view dibatalkan & dihapus otomatis!`,
+                    'warning'
+                );
+            }
+
+            saveStateToStorage();
+            renderAllViews();
+        }
+
+        function restoreSpammedPost(logId) {
+            const idx = spamLogs.findIndex(item => item.logId === logId);
+            if (idx === -1) return;
+            const backup = spamLogs[idx].postBackup;
+            backup.lastOpenedAt = 0;
+
+            if (!posts.some(p => p.id === backup.id)) {
+                posts.push(backup);
+            }
+            spamLogs.splice(idx, 1);
+            saveStateToStorage();
+            renderAllViews();
+            showToast(`Karya "${backup.title}" berhasil dipulihkan ke folder Kelas ${backup.grade} ${backup.folder}.`, 'info');
+        }
+
+        function clearSpamLogs() {
+            spamLogs = [];
+            saveStateToStorage();
+            renderAllViews();
+        }
+
+        function updateSpamPolicy() {
+            spamPolicy = document.getElementById('spamPolicySelect').value;
+            showToast('Kebijakan proteksi anti-spam 30 detik diperbarui.', 'info');
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            document.getElementById('modalPlayerContainer').innerHTML = '';
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function renderSpreadsheetTable() {
+            const tbody = document.getElementById('spreadsheetTableBody');
+            const sorted = [...posts].sort((a, b) => b.views - a.views);
+            document.getElementById('sheetRowCount').textContent = `Menampilkan ${sorted.length} baris karya aktif`;
+
+            if (sorted.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="8" class="py-8 text-center text-slatesoft-600">Tidak ada data karya aktif di Spreadsheet.</td></tr>`;
+            } else {
+                const nowMs = Date.now();
+                tbody.innerHTML = sorted.map((post, idx) => {
+                    const diffSec = post.lastOpenedAt ? Math.floor((nowMs - post.lastOpenedAt) / 1000) : null;
+                    const cooldownActive = diffSec !== null && diffSec < 30;
+                    const rankBadge = idx === 0
+                        ? `<span class="px-2.5 py-1 rounded-lg bg-amber-100 text-amber-800 font-bold">#1 Paling Up 👑</span>`
+                        : `<span class="px-2.5 py-1 rounded-lg bg-skysoft-50 text-slatesoft-700 font-semibold">#${idx + 1}</span>`;
+
+                    return `
+                        <tr class="hover:bg-skysoft-50/70 transition-colors">
+                            <td class="py-3.5 px-4">${rankBadge}</td>
+                            <td class="py-3.5 px-4 font-bold text-skysoft-700">Kelas ${post.grade} ${post.folder}</td>
+                            <td class="py-3.5 px-4 font-semibold text-slatesoft-800 max-w-xs truncate">${escapeHtml(post.title)}</td>
+                            <td class="py-3.5 px-4 text-slatesoft-600">${escapeHtml(post.author)}</td>
+                            <td class="py-3.5 px-4">
+                                <span class="px-2.5 py-1 rounded-lg bg-skysoft-100 text-skysoft-800 font-bold">${post.views} Views</span>
+                            </td>
+                            <td class="py-3.5 px-4 text-xs text-slatesoft-600">
+                                ${diffSec === null ? 'Belum dibuka sesi ini' : `${diffSec} detik lalu`}
+                            </td>
+                            <td class="py-3.5 px-4">
+                                ${cooldownActive
+                                    ? `<span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-semibold">Cooldown Anti-Spam (${30 - diffSec}d)</span>`
+                                    : `<span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold">✓ Valid & Aman</span>`
+                                }
+                            </td>
+                            <td class="py-3.5 px-4 text-right space-x-1">
+                                <button onclick="openVideoModal('${post.id}')" class="px-2.5 py-1 rounded-lg bg-skysoft-100 hover:bg-skysoft-200 text-skysoft-700 text-xs font-semibold">
+                                    Buka
+                                </button>
+                                <button onclick="deletePostFromSheet('${post.id}')" class="px-2.5 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-600 text-xs font-semibold">
+                                    Hapus
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+            }
+
+            const spamBox = document.getElementById('spamLogContainer');
+            if (spamLogs.length === 0) {
+                spamBox.innerHTML = `<p class="text-slatesoft-600 italic">Belum ada aktivitas spam (&lt; 30 detik) yang terdeteksi.</p>`;
+            } else {
+                spamBox.innerHTML = spamLogs.map(item => `
+                    <div class="p-3 rounded-xl bg-amber-50/70 border border-amber-200 flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                            <span class="font-bold text-amber-800">[${item.detectedAt}]</span>
+                            <span> Terdeteksi bukaan ulang dalam <strong>${item.elapsedSec} detik</strong> pada karya <strong>"${escapeHtml(item.postBackup.title)}"</strong> (Kelas ${item.postBackup.grade} ${item.postBackup.folder}). Data telah dihapus otomatis.</span>
+                        </div>
+                        <button onclick="restoreSpammedPost('${item.logId}')" class="px-3 py-1 rounded-lg bg-white border border-amber-300 text-amber-800 font-semibold hover:bg-amber-100">
+                            Pulihkan Karya
+                        </button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function deletePostFromSheet(postId) {
+            posts = posts.filter(p => p.id !== postId);
+            saveStateToStorage();
+            renderAllViews();
+
+            const gasUrl = getActiveGasUrl();
+            if (gasUrl && !gasUrl.includes('DEFAULT_SMP_BODHI_DHARMA_DEPLOY_URL')) {
+                fetch(gasUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify({ action: 'delete', id: postId })
+                }).catch(() => {});
+            }
+            showToast('Baris data karya berhasil dihapus dari Spreadsheet.', 'info');
+        }
+
+        function exportSpreadsheetCSV() {
+            const sorted = [...posts].sort((a, b) => b.views - a.views);
+            const headers = ['Peringkat', 'Tingkat Kelas', 'Folder Kelas', 'Judul Karya', 'Kreator', 'Kategori', 'Jumlah View', 'Waktu Upload', 'Deskripsi'];
+            const rows = sorted.map((p, idx) => [
+                idx + 1,
+                `Kelas ${p.grade}`,
+                p.folder,
+                `"${p.title.replace(/"/g, '""')}"`,
+                `"${p.author.replace(/"/g, '""')}"`,
+                `"${p.category}"`,
+                p.views,
+                p.createdAt,
+                `"${p.description.replace(/"/g, '""').replace(/\n/g, ' ')}"`
+            ]);
+
+            const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement('a');
+            link.setAttribute('href', encodedUri);
+            link.setAttribute('download', 'Data_Spreadsheet_Gelar_Karya_SMP_Bodhi_Dharma.csv');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast('File CSV Spreadsheet berhasil diunduh!', 'info');
+        }
+
+        function openDriveIntegrationModal() {
+            requestPasswordForAction('open_modal');
+        }
+
+        function closeDriveIntegrationModal() {
+            const m = document.getElementById('driveIntegrationModal');
+            m.classList.add('hidden');
+            m.classList.remove('flex');
+        }
+
+        function saveGasWebhook() {
+            if (!isGasEditUnlocked) {
+                requestPasswordForAction('unlock_edit');
+                return;
+            }
+            const url = document.getElementById('gasWebhookInput').value.trim();
+            try {
+                localStorage.setItem(STORAGE_WEBHOOK_KEY, url);
+            } catch (e) {}
+            updateConnectionBannerUI();
+            showToast('URL Integrasi Google Drive & Spreadsheet berhasil disimpan dan disinkronkan!', 'info');
+            closeDriveIntegrationModal();
+            if (url) {
+                fetchPostsFromGoogleDrive(true);
+            }
+        }
+
+        function copyAppsScriptCode() {
+            const code = document.getElementById('appsScriptCodeBlock').innerText;
+            const temp = document.createElement('textarea');
+            temp.value = code;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            showToast('Seluruh kode Code.gs berhasil disalin!', 'info');
+        }
+
+        function syncViewOrSpamToGoogleSheet(postId) {
+            const gasUrl = getActiveGasUrl();
+            if (!gasUrl || gasUrl.includes('DEFAULT_SMP_BODHI_DHARMA_DEPLOY_URL')) return;
+            fetch(gasUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify({
+                    action: 'view',
+                    id: postId,
+                    spamPolicy: spamPolicy
+                })
+            }).catch(() => {});
+        }
+
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            const styleClass = type === 'warning'
+                ? 'bg-amber-50 border-amber-300 text-amber-900'
+                : type === 'error'
+                ? 'bg-rose-50 border-rose-300 text-rose-900'
+                : 'bg-white border-skysoft-300 text-slatesoft-800';
+
+            toast.className = `pointer-events-auto p-4 rounded-2xl border shadow-lg text-xs sm:text-sm font-medium flex items-start justify-between gap-3 animate-pop-in ${styleClass}`;
+            toast.innerHTML = `
+                <div class="leading-relaxed">${message}</div>
+                <button onclick="this.parentElement.remove()" class="text-slatesoft-600 hover:text-slatesoft-800 shrink-0">
+                    <i class="ph-bold ph-x"></i>
+                </button>
+            `;
+            container.appendChild(toast);
+            setTimeout(() => {
+                if (toast.parentElement) toast.remove();
+            }, 6500);
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+    </script>
+</body>
+</html>
